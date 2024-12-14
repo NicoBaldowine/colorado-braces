@@ -12,7 +12,7 @@ export default function Testimonials() {
   const testimonialImages = [testimonial1, testimonial2, testimonial3];
 
   return (
-    <section className="max-w-[1350px] mx-auto px-4 py-12 lg:py-24">
+    <section className="py-24 bg-gray-50">
       <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-8 lg:mb-16">
         {t('home.testimonials.title')}
       </h2>

@@ -1,9 +1,10 @@
 "use client";
 import { useState } from "react";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import { useTranslations } from "@/hooks/useTranslations";
+import Contact from "@/components/Contact";
 
 export default function Appointment() {
+  const { t } = useTranslations();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",

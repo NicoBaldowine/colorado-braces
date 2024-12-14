@@ -6,13 +6,12 @@ interface BasicItem {
   icon: string;
 }
 
-interface BasicProps {
+type BasicProps = {
   imageUrl: string;
   title: string;
-  description: string[] | BasicItem[];
+  description: string | string[];
   reverse?: boolean;
-  withIcons?: boolean;
-}
+};
 
 const iconMap = {
   invisible: FaSmile,
@@ -26,7 +25,7 @@ const iconMap = {
   payment: FaCheckCircle,
 };
 
-export default function Basic({ imageUrl, title, description, reverse = false, withIcons = false }: BasicProps) {
+export default function Basic({ imageUrl, title, description, reverse }: BasicProps) {
   return (
     <section className="py-12 lg:py-24">
       <div className="max-w-[1350px] mx-auto px-4">

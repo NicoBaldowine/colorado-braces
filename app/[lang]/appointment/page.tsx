@@ -3,6 +3,16 @@ import { useState } from "react";
 import { useTranslations } from "@/hooks/useTranslations";
 import Contact from "@/components/Contact";
 
+interface TranslationFunction {
+  (key: string): string | string[];
+  (key: string, params: Record<string, string>): string;
+}
+
+interface UseTranslations {
+  t: TranslationFunction;
+  lang: string;
+}
+
 export default function Appointment() {
   const { t, lang } = useTranslations();
   const [formData, setFormData] = useState({

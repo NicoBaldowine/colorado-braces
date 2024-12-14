@@ -15,12 +15,12 @@ export default function About() {
       <Basic 
         imageUrl="/images/commitment.jpg"
         title={t('about.commitment.title')}
-        description={t('about.commitment.content')}
+        description={[t('about.commitment.content')]}
       />
       <Basic 
         imageUrl="/images/why-choose.jpg"
         title={t('about.whyChoose.title')}
-        description={t('about.whyChoose.content')}
+        description={[t('about.whyChoose.content')]}
         reverse
       />
       <Doctor />

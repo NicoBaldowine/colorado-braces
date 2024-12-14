@@ -7,6 +7,7 @@ import Link from "next/link";
 import { usePathname } from 'next/navigation';
 import { useTranslations } from '@/hooks/useTranslations';
 import Logo from '@/app/assets/colorado-braces.svg'
+import Image from 'next/image';
 
 export default function Header() {
   const pathname = usePathname();
@@ -37,7 +38,7 @@ export default function Header() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href={`/${lang}`}>
-              <img
+              <Image 
                 src={Logo.src}
                 alt="Colorado Braces"
                 width={145}

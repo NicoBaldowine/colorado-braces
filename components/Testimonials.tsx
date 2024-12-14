@@ -38,7 +38,7 @@ export default function Testimonials() {
             </h3>
 
             <p className="text-sm lg:text-base text-gray-600 mb-4 lg:mb-6 italic">
-              "{testimonial.description}"
+              &quot;{testimonial.description}&quot;
             </p>
 
             <div className="mt-auto text-xs lg:text-sm">

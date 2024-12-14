@@ -3,16 +3,6 @@ import { useState } from "react";
 import { useTranslations } from "@/hooks/useTranslations";
 import Contact from "@/components/Contact";
 
-interface TranslationFunction {
-  (key: string): string | string[];
-  (key: string, params: Record<string, string>): string;
-}
-
-interface UseTranslations {
-  t: TranslationFunction;
-  lang: string;
-}
-
 export default function Appointment() {
   const { t } = useTranslations();
   const [formData, setFormData] = useState({
@@ -73,9 +63,9 @@ export default function Appointment() {
           preferredTime: ""
         });
       } else {
-        throw new Error('Failed to send appointment request');
+        throw new Error();
       }
-    } catch (error) {
+    } catch (_error) {
       setSubmitStatus({
         type: "error",
         message: t('appointment.errorMessage')

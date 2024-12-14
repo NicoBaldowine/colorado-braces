@@ -3,8 +3,11 @@ import { redirect } from 'next/navigation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
-export async function generateStaticParams() {
-  return [{ lang: 'en' }, { lang: 'es' }];
+export function generateStaticParams() {
+  return [
+    { lang: 'en' },
+    { lang: 'es' }
+  ];
 }
 
 export const metadata: Metadata = {

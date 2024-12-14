@@ -53,7 +53,7 @@ export default function BlogPost() {
             {/* Additional Image Placeholder */}
             <div className="w-full h-[300px] my-12 rounded-lg bg-gray-200"></div>
             <p className="text-sm text-gray-500 mt-2 italic">
-              Clear aligners are custom-made for each patient's unique treatment plan
+              Clear aligners are custom-made for each patient&apos;s unique treatment plan
             </p>
 
             {/* Benefits of Clear Aligners */}

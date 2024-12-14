@@ -26,8 +26,8 @@ const translations = {
     },
     home: {
       hero: {
-        title: "Transforming Smiles with Braces and Clear Aligners in Denver",
-        description: "Expert Orthodontic Care with Invisalign & OrthoFX",
+        title: "Transform Your Smile with Colorado Braces",
+        description: "Experience exceptional orthodontic care in Denver with our expert team. Specializing in Invisalign & OrthoFX, we're dedicated to creating beautiful, healthy smiles that last a lifetime.",
         cta: "Schedule Free Consultation"
       },
       benefits: {
@@ -759,13 +759,13 @@ const translations = {
         english: "English",
         spanish: "Español"
       },
-      learnMore: "M��s sobre {{service}}"
+      learnMore: "Más sobre {{service}}"
     },
     home: {
       hero: {
-        title: "Transformando Sonrisas con Brackets y Alineadores en Denver",
-        description: "Cuidado Ortodóntico Experto con Invisalign y OrthoFX",
-        cta: "Agenda Consulta Gratis"
+        title: "Transforma Tu Sonrisa con Colorado Braces",
+        description: "Experimenta un cuidado ortodóntico excepcional en Denver con nuestro equipo experto. Especializados en Invisalign y OrthoFX, nos dedicamos a crear sonrisas hermosas y saludables que duran toda la vida.",
+        cta: "Agenda una Consulta Gratis"
       },
       benefits: {
         title: "¿Por Qué Elegir Colorado Braces?",

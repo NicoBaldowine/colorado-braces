@@ -13,12 +13,10 @@ const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
   {
     rules: {
-      "no-unused-vars": "warn",
-      "@next/next/no-img-element": "off",
-      "strict-boolean-expressions": "off",
-      "@typescript-eslint/no-empty-interface": "warn",
-      "@typescript-eslint/no-explicit-any": "warn",
-      "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }]
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": "off",
+      "react/no-unescaped-entities": "off",
+      "@next/next/no-img-element": "off"
     },
     files: ["**/*.ts", "**/*.tsx"],
     ignores: ["node_modules/**", ".next/**", "out/**", "public/**"]

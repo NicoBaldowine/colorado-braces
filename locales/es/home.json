@@ -1,0 +1,46 @@
+{
+  "hero": {
+    "title": "Transforma Tu Sonrisa con Colorado Braces",
+    "description": "Experimenta un cuidado ortodóntico excepcional en Denver con nuestro equipo experto. Nos dedicamos a crear sonrisas hermosas y saludables que duran toda la vida.",
+    "cta": "Agenda una Consulta Gratis"
+  },
+  "benefits": {
+    "title": "¿Por Qué Elegir Colorado Braces?",
+    "items": [
+      {
+        "title": "Cuidado Experto",
+        "description": "Nuestros ortodoncistas experimentados brindan tratamiento personalizado usando la última tecnología"
+      },
+      {
+        "title": "Opciones Accesibles",
+        "description": "Planes de pago flexibles y opciones de seguro para hacer el tratamiento accesible"
+      },
+      {
+        "title": "Ubicación Conveniente",
+        "description": "Oficina de fácil acceso en Denver con comodidades confortables"
+      }
+    ]
+  },
+  "services": {
+    "title": "Nuestros Servicios",
+    "description": "Ofrecemos una amplia gama de tratamientos ortodónticos para satisfacer tus necesidades",
+    "items": [
+      {
+        "title": "Alineadores Transparentes",
+        "description": "Alineadores invisibles para un tratamiento ortodóntico discreto"
+      },
+      {
+        "title": "Brackets Transparentes",
+        "description": "Brackets cerámicos que se mezclan con el color natural de tus dientes"
+      },
+      {
+        "title": "Brackets Tradicionales",
+        "description": "Brackets metálicos tradicionales para un enderezamiento efectivo de los dientes"
+      }
+    ]
+  },
+  "blog": {
+    "title": "Último de Nuestro Blog",
+    "readMore": "Leer Más"
+  }
+} 

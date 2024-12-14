@@ -1,0 +1,20 @@
+{
+  "navigation": {
+    "home": "Inicio",
+    "about": "Nosotros",
+    "services": "Servicios",
+    "blog": "Blog",
+    "contact": "Contáctenos",
+    "appointment": "Agendar Cita"
+  },
+  "services": {
+    "clearAligners": "Alineadores Transparentes",
+    "clearBraces": "Brackets Transparentes",
+    "conventionalBraces": "Brackets Tradicionales",
+    "whitening": "Blanqueamiento"
+  },
+  "languages": {
+    "english": "English",
+    "spanish": "Español"
+  }
+} 

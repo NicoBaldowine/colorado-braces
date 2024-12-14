@@ -1,0 +1,46 @@
+{
+  "hero": {
+    "title": "Transform Your Smile with Colorado Braces",
+    "description": "Experience exceptional orthodontic care in Denver with our expert team. We're dedicated to creating beautiful, healthy smiles that last a lifetime.",
+    "cta": "Schedule Free Consultation"
+  },
+  "benefits": {
+    "title": "Why Choose Colorado Braces?",
+    "items": [
+      {
+        "title": "Expert Care",
+        "description": "Our experienced orthodontists provide personalized treatment using the latest technology"
+      },
+      {
+        "title": "Affordable Options",
+        "description": "Flexible payment plans and insurance options to make treatment accessible"
+      },
+      {
+        "title": "Convenient Location",
+        "description": "Easily accessible office in Denver with comfortable amenities"
+      }
+    ]
+  },
+  "services": {
+    "title": "Our Services",
+    "description": "We offer a comprehensive range of orthodontic treatments to meet your needs",
+    "items": [
+      {
+        "title": "Clear Aligners",
+        "description": "Invisible aligners for a discreet orthodontic treatment"
+      },
+      {
+        "title": "Clear Braces",
+        "description": "Ceramic brackets that blend with your natural tooth color"
+      },
+      {
+        "title": "Conventional Braces",
+        "description": "Traditional metal braces for effective teeth straightening"
+      }
+    ]
+  },
+  "blog": {
+    "title": "Latest from Our Blog",
+    "readMore": "Read More"
+  }
+} 

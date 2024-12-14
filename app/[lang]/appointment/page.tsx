@@ -14,7 +14,7 @@ interface UseTranslations {
 }
 
 export default function Appointment() {
-  const { t, lang } = useTranslations();
+  const { t } = useTranslations();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",

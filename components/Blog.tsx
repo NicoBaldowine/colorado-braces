@@ -1,10 +1,16 @@
 'use client';
 import { useTranslations } from '@/hooks/useTranslations';
 import { FaArrowRight } from 'react-icons/fa';
+import Image from 'next/image';
+import blogpost1 from '@/app/assets/blogpost1.jpg';
+import blogpost2 from '@/app/assets/blogpost2.jpg';
+import blogpost3 from '@/app/assets/blogpost3.jpg';
 
 export default function Blog() {
   const { t } = useTranslations();
   const posts = t('home.blog.posts');
+  
+  const blogImages = [blogpost1, blogpost2, blogpost3];
 
   return (
     <section className="bg-[#023A65] py-12 lg:py-24">
@@ -28,7 +34,15 @@ export default function Blog() {
               key={index} 
               className="bg-[#034b82] rounded-2xl overflow-hidden hover:bg-[#045694] transition-all duration-300 flex flex-col"
             >
-              <div className="w-full h-[150px] lg:h-[200px] bg-[#012845]" />
+              <div className="w-full h-[150px] lg:h-[200px] relative">
+                <Image
+                  src={blogImages[index]}
+                  alt={post.title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+              </div>
               
               <div className="p-6 lg:p-8 flex flex-col flex-grow">
                 <h3 className="text-lg lg:text-xl font-bold text-white mb-3 lg:mb-4 line-clamp-2">

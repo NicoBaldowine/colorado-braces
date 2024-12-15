@@ -3,6 +3,8 @@ import Contact from "@/components/Contact";
 import { useTranslations } from '@/hooks/useTranslations';
 import { FaSmile, FaCheck, FaClock } from 'react-icons/fa';
 import Link from 'next/link';
+import Image from 'next/image';
+import clearAligners from '@/app/assets/clear-aligners.jpg';
 
 export default function ClearAligners() {
   const { t, lang } = useTranslations();
@@ -28,9 +30,15 @@ export default function ClearAligners() {
         <div className="max-w-[1350px] mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
             {/* Image */}
-            <div className="bg-gray-100 rounded-lg overflow-hidden h-[500px]">
-              {/* Replace with actual image */}
-              <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: "url('/images/clear-aligners-benefits.jpg')" }} />
+            <div className="rounded-lg overflow-hidden h-[500px] relative">
+              <Image
+                src={clearAligners}
+                alt="Clear Aligners Benefits"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                priority
+              />
             </div>
 
             {/* Benefits */}

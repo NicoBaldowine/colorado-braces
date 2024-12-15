@@ -1,38 +1,63 @@
-import { FaCheckCircle, FaCog, FaRegClock, FaSmile, FaTooth, FaRegCalendarAlt } from 'react-icons/fa';
+'use client';
+import Image from 'next/image';
+import clearBraces from '@/app/assets/clear-braces.jpg';
+import clearAligners from '@/app/assets/clear-aligners.jpg';
+// Import other images if needed
 
 interface BasicProps {
   imageUrl: string;
   title: string;
-  description: string | string[];
+  description: any[];
   reverse?: boolean;
+  withIcons?: boolean;
 }
 
-const iconMap = {
-  invisible: FaSmile,
-  comfort: FaTooth,
-  hygiene: FaCheckCircle,
-  tech: FaCog,
-  treatment: FaRegCalendarAlt,
-  monitoring: FaRegClock,
-  invisalign: FaSmile,
-  orthofx: FaTooth,
-  payment: FaCheckCircle,
-};
+export default function Basic({ imageUrl, title, description, reverse = false, withIcons = false }: BasicProps) {
+  // Function to get the correct image based on the URL
+  const getImage = (url: string) => {
+    if (url.includes('clear-braces')) return clearBraces;
+    if (url.includes('clear-aligners')) return clearAligners;
+    // Add other image conditions if needed
+    return clearBraces; // default fallback
+  };
 
-export default function Basic({ imageUrl, title, description, reverse }: BasicProps) {
   return (
-    <div className={`py-24 ${reverse ? 'bg-gray-50' : ''}`}>
+    <section className="py-24">
       <div className="max-w-[1350px] mx-auto px-4">
-        <div className={`grid md:grid-cols-2 gap-12 items-center ${reverse ? 'flex-row-reverse' : ''}`}>
-          <div className="bg-gray-100 rounded-lg overflow-hidden h-[500px]">
-            <div 
-              className="w-full h-full bg-cover bg-center" 
-              style={{ backgroundImage: `url('${imageUrl}')` }} 
+        <div className={`grid md:grid-cols-2 gap-12 items-center ${reverse ? 'direction-rtl' : ''}`}>
+          {/* Image */}
+          <div className="rounded-lg overflow-hidden h-[500px] relative">
+            <Image
+              src={getImage(imageUrl)}
+              alt={title}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              priority
             />
           </div>
-          {/* Rest of your component */}
+
+          {/* Content */}
+          <div>
+            <h2 className="text-3xl font-bold text-gray-900 mb-12">{title}</h2>
+            <div className="space-y-8">
+              {description.map((item, index) => (
+                <div key={index} className="flex items-start gap-6">
+                  {withIcons && (
+                    <div className="w-12 h-12 rounded-full bg-[#023A65] text-white flex items-center justify-center flex-shrink-0">
+                      {/* Add your icon component here if needed */}
+                    </div>
+                  )}
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
+                    <p className="text-gray-600">{item.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

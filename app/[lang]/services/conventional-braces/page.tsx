@@ -3,6 +3,8 @@ import Contact from "@/components/Contact";
 import { useTranslations } from '@/hooks/useTranslations';
 import { FaCheck, FaTools, FaDollarSign } from 'react-icons/fa';
 import Link from 'next/link';
+import Image from 'next/image';
+import conventionalBraces from '@/app/assets/conventional-braces.jpg';
 
 export default function ConventionalBraces() {
   const { t, lang } = useTranslations();
@@ -10,10 +12,10 @@ export default function ConventionalBraces() {
   return (
     <main>
       {/* Hero Section */}
-      <section className="bg-[#023A65] text-white py-24">
+      <section className="relative bg-gradient-to-b from-[#023A65] to-[#034b82] py-20 lg:py-32">
         <div className="max-w-[1350px] mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-5xl font-bold mb-8">
+            <h1 className="text-5xl font-bold mb-8 text-white">
               {t('services.conventionalBraces.hero.title')}
             </h1>
             <p className="text-xl leading-relaxed text-gray-200">
@@ -28,8 +30,15 @@ export default function ConventionalBraces() {
         <div className="max-w-[1350px] mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
             {/* Image */}
-            <div className="bg-gray-100 rounded-lg overflow-hidden h-[500px]">
-              <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: "url('/images/conventional-braces-benefits.jpg')" }} />
+            <div className="rounded-[24px] overflow-hidden h-[500px] relative">
+              <Image
+                src={conventionalBraces}
+                alt="Conventional Braces Benefits"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                priority
+              />
             </div>
 
             {/* Benefits */}
@@ -108,7 +117,7 @@ export default function ConventionalBraces() {
                 {t('services.conventionalBraces.cta.description')}
               </p>
               <Link 
-                href={`/${lang}/contact`}
+                href={`/${lang}/appointment`}
                 className="inline-flex items-center justify-center px-8 py-4 bg-white text-[#023A65] font-semibold rounded-full hover:bg-gray-100 transition-colors"
               >
                 {t('services.conventionalBraces.cta.button')}
@@ -118,7 +127,6 @@ export default function ConventionalBraces() {
         </div>
       </section>
 
-      {/* Contact Section */}
       <Contact />
     </main>
   );

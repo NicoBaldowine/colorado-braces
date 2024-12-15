@@ -3,16 +3,20 @@ import { getTranslations } from '@/lib/translations';
 import Hero from '@/components/Hero';
 import SocialProof from '@/components/SocialProof';
 import WhyChoose from '@/components/WhyChoose';
-import Services from './components/Services.server';
+import Services from '@/components/Services';
 import Testimonials from '@/components/Testimonials';
 import FAQ from '@/components/FAQ';
 import Contact from '@/components/Contact';
 import Blog from '@/components/Blog';
 import { use } from 'react';
 
-export default function HomePage({ params }: { params: Promise<{ lang: string }> }) {
-  const { lang } = use(params);
-  const t = getTranslations(lang);
+type PageProps = {
+  params: Promise<{ lang: string }> | { lang: string }
+}
+
+export default function HomePage({ params }: PageProps) {
+  const resolvedParams = 'then' in params ? use(params) : params;
+  const t = getTranslations(resolvedParams.lang);
   
   const servicesTranslations = {
     title: t('home.services.title'),
@@ -42,12 +46,8 @@ export default function HomePage({ params }: { params: Promise<{ lang: string }>
   };
 
   return (
-    <main>
-      <Hero 
-        title={t('home.hero.title')}
-        description={t('home.hero.description')}
-        ctaText={t('home.hero.cta')}
-      />
+    <>
+      <Hero />
       
       <SocialProof />
 
@@ -57,7 +57,7 @@ export default function HomePage({ params }: { params: Promise<{ lang: string }>
       />
       
       <Services 
-        lang={lang} 
+        lang={resolvedParams.lang} 
         translations={servicesTranslations} 
       />
 
@@ -68,6 +68,6 @@ export default function HomePage({ params }: { params: Promise<{ lang: string }>
       <FAQ />
 
       <Contact />
-    </main>
+    </>
   );
 }

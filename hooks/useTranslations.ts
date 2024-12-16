@@ -337,9 +337,50 @@ const translations = {
         ]
       },
       hero: {
-        title: "Transforming Smiles with Brackets and Clear Aligners in Denver",
-        subtitle: "Expert Orthodontic Care with Invisalign & OrthoFX",
-        description: "At Colorado Braces, we combine advanced orthodontic technology with personalized care to create beautiful, confident smiles. Our experienced team is dedicated to providing comfortable and effective treatment options tailored to your unique needs."
+        title: "Welcome to Colorado Braces: Your Trusted Orthodontic Care in Denver",
+        description: "At Colorado Braces, we pride ourselves on providing the highest quality orthodontic treatments coupled with compassionate care. Serving the Denver community, our mission is to ensure that every patient feels comfortable and supported throughout their orthodontic journey."
+      },
+      mission: {
+        title: "Our Mission & Vision",
+        items: [
+          {
+            title: "Our Mission",
+            description: "To provide exceptional orthodontic care with a personal touch, ensuring each patient achieves their perfect smile."
+          },
+          {
+            title: "Patient-Centered Care",
+            description: "We prioritize your comfort and satisfaction throughout your orthodontic journey."
+          },
+          {
+            title: "Expert Treatment",
+            description: "Using the latest technology and techniques to deliver outstanding results."
+          },
+          {
+            title: "Welcoming Environment",
+            description: "Creating a friendly and comfortable atmosphere for all our patients."
+          }
+        ]
+      },
+      values: {
+        title: "Our Values",
+        items: [
+          {
+            title: "Excellence",
+            description: "Committed to delivering the highest quality orthodontic care."
+          },
+          {
+            title: "Compassion",
+            description: "Treating each patient with understanding and personal attention."
+          },
+          {
+            title: "Innovation",
+            description: "Staying at the forefront of orthodontic technology and techniques."
+          },
+          {
+            title: "Community",
+            description: "Building lasting relationships with our patients and community."
+          }
+        ]
       },
       doctor: {
         title: "Meet Dr. Eduardo Garcia, DDS",
@@ -1108,9 +1149,50 @@ const translations = {
         ]
       },
       hero: {
-        title: "Transformando Sonrisas con Brackets y Alineadores en Denver",
-        subtitle: "Cuidado Ortodóntico Experto con Invisalign y OrthoFX",
-        description: "En Colorado Braces, combinamos tecnología ortodóntica avanzada con atención personalizada para crear sonrisas hermosas y seguras. Nuestro experimentado equipo está dedicado a proporcionar opciones de tratamiento cómodas y efectivas adaptadas a sus necesidades únicas."
+        title: "Bienvenido a Colorado Braces: Tu Cuidado Ortodóntico de Confianza en Denver",
+        description: "En Colorado Braces, nos enorgullece proporcionar tratamientos ortodónticos de la más alta calidad junto con una atención compasiva. Sirviendo a la comunidad de Denver, nuestra misión es asegurar que cada paciente se sienta cómodo y apoyado durante todo su tratamiento ortodóntico."
+      },
+      mission: {
+        title: "Nuestra Misión y Visión",
+        items: [
+          {
+            title: "Nuestra Misión",
+            description: "Brindar atención ortodóntica excepcional con un toque personal, asegurando que cada paciente logre su sonrisa perfecta."
+          },
+          {
+            title: "Atención Personalizada",
+            description: "Priorizamos tu comodidad y satisfacción durante todo tu tratamiento ortodóntico."
+          },
+          {
+            title: "Tratamiento Experto",
+            description: "Utilizando la última tecnología y técnicas para ofrecer resultados extraordinarios."
+          },
+          {
+            title: "Ambiente Acogedor",
+            description: "Creando un ambiente amigable y cómodo para todos nuestros pacientes."
+          }
+        ]
+      },
+      values: {
+        title: "Nuestros Valores",
+        items: [
+          {
+            title: "Excelencia",
+            description: "Comprometidos con brindar la más alta calidad en atención ortodóntica."
+          },
+          {
+            title: "Compasión",
+            description: "Tratando a cada paciente con comprensión y atención personalizada."
+          },
+          {
+            title: "Innovación",
+            description: "Manteniéndonos a la vanguardia de la tecnología y técnicas ortodónticas."
+          },
+          {
+            title: "Comunidad",
+            description: "Construyendo relaciones duraderas con nuestros pacientes y la comunidad."
+          }
+        ]
       },
       doctor: {
         title: "Conozca al Dr. Eduardo Garcia, DDS",

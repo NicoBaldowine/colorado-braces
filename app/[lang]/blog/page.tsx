@@ -1,69 +1,60 @@
 'use client';
 import Contact from "@/components/Contact";
 import Link from "next/link";
+import Image from 'next/image';
 import { useTranslations } from '@/hooks/useTranslations';
-
-type BlogPost = {
-  title: string;
-  description: string;
-  date: string;
-  readTime: string;
-  slug: string;
-}
+import { FaArrowRight } from 'react-icons/fa';
+import blogpost1 from '@/app/assets/blogpost1.jpg';
+import blogpost2 from '@/app/assets/blogpost2.jpg';
+import blogpost3 from '@/app/assets/blogpost3.jpg';
 
 export default function Blog() {
   const { t, lang } = useTranslations();
 
-  const blogPosts: Record<string, BlogPost[]> = {
+  const blogPosts = {
     en: [
       {
-        title: "The Benefits of Early Orthodontic Treatment for Children",
-        description: "Learn why early intervention can make a significant difference in your child's orthodontic journey and overall oral health.",
-        date: "March 15, 2024",
-        readTime: "5 min read",
-        slug: "benefits-early-orthodontic-treatment"
+        title: "Invisible Braces vs. Traditional Braces: Which is Better for Your Lifestyle?",
+        description: "Compare the advantages of invisible braces with conventional braces. Learn about aesthetics, comfort, maintenance, and how each option fits into your lifestyle.",
+        slug: "clear-aligners-vs-traditional-braces",
+        image: blogpost1
       },
       {
-        title: "Clear Aligners vs Traditional Braces: Making the Right Choice",
-        description: "Explore the pros and cons of different orthodontic treatments to help you make an informed decision about your smile journey.",
-        date: "March 10, 2024",
-        readTime: "6 min read",
-        slug: "clear-aligners-vs-traditional-braces"
+        title: "Can Clear Aligners Fix My Bite? Understanding Malocclusion Treatment Options",
+        description: "Discover whether clear aligners can fix bite issues caused by malocclusion. Learn about the effectiveness of clear aligners in treating various bite problems.",
+        slug: "can-clear-aligners-fix-bite",
+        image: blogpost2
       },
       {
-        title: "Tips for Maintaining Your Braces and Oral Hygiene",
-        description: "Essential care tips and best practices for keeping your braces clean and maintaining excellent oral hygiene throughout your treatment.",
-        date: "March 5, 2024",
-        readTime: "4 min read",
-        slug: "tips-maintaining-braces-oral-hygiene"
+        title: "How Do Braces Work? A Simple Guide to Fixing Crooked Teeth and Misaligned Bites",
+        description: "Learn how braces straighten crooked teeth and fix misaligned bites in this simple guide. Understand the orthodontic process and how we can help you achieve a healthy smile.",
+        slug: "how-do-braces-work",
+        image: blogpost3
       }
     ],
     es: [
       {
-        title: "Los Beneficios del Tratamiento Ortodóntico Temprano para Niños",
-        description: "Aprende por qué la intervención temprana puede hacer una diferencia significativa en el viaje ortodóntico de tu hijo y su salud oral general.",
-        date: "15 de marzo, 2024",
-        readTime: "5 min de lectura",
-        slug: "beneficios-tratamiento-ortodontico-temprano"
+        title: "Brackets Invisibles vs. Brackets Tradicionales: ¿Cuál es Mejor para tu Estilo de Vida?",
+        description: "Compara las ventajas de los brackets invisibles con los convencionales. Aprende sobre estética, comodidad, mantenimiento y cómo cada opción se adapta a tu estilo de vida.",
+        slug: "clear-aligners-vs-traditional-braces",
+        image: blogpost1
       },
       {
-        title: "Alineadores Transparentes vs Brackets Tradicionales: Tomando la Decisión Correcta",
-        description: "Explora los pros y contras de diferentes tratamientos ortodónticos para ayudarte a tomar una decisión informada sobre el viaje de tu sonrisa.",
-        date: "10 de marzo, 2024",
-        readTime: "6 min de lectura",
-        slug: "alineadores-vs-brackets-tradicionales"
+        title: "¿Pueden los Alineadores Transparentes Corregir mi Mordida? Entendiendo las Opciones de Tratamiento",
+        description: "Descubre si los alineadores transparentes pueden corregir problemas de mordida causados por la maloclusión. Aprende sobre su efectividad en diversos problemas de mordida.",
+        slug: "can-clear-aligners-fix-bite",
+        image: blogpost2
       },
       {
-        title: "Consejos para Mantener tus Brackets y la Higiene Oral",
-        description: "Consejos esenciales de cuidado y mejores prácticas para mantener tus brackets limpios y mantener una excelente higiene oral durante tu tratamiento.",
-        date: "5 de marzo, 2024",
-        readTime: "4 min de lectura",
-        slug: "consejos-mantenimiento-brackets-higiene-oral"
+        title: "¿Cómo Funcionan los Brackets? Una Guía Simple para Corregir Dientes Torcidos",
+        description: "Aprende cómo los brackets enderezan los dientes torcidos y corrigen problemas de mordida en esta guía simple. Entiende el proceso ortodóntico y cómo podemos ayudarte.",
+        slug: "how-do-braces-work",
+        image: blogpost3
       }
     ]
   };
 
-  const currentPosts = blogPosts[lang as keyof typeof blogPosts] || blogPosts['en'];
+  const currentPosts = blogPosts[lang];
 
   return (
     <main>
@@ -89,24 +80,31 @@ export default function Blog() {
               <Link 
                 href={`/${lang}/blog/${post.slug}`}
                 key={index}
-                className="group"
+                className="bg-[#034b82] rounded-2xl overflow-hidden hover:bg-[#045694] transition-all duration-300 flex flex-col"
               >
-                <article className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-                  <div className="bg-gray-200 h-[240px]"></div>
-                  <div className="p-6">
-                    <div className="flex items-center gap-4 text-sm text-gray-600 mb-3">
-                      <span>{post.date}</span>
-                      <span>•</span>
-                      <span>{post.readTime}</span>
-                    </div>
-                    <h2 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#023A65] transition-colors">
-                      {post.title}
-                    </h2>
-                    <p className="text-gray-600">
-                      {post.description}
-                    </p>
+                <div className="w-full h-[150px] lg:h-[200px] relative">
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                </div>
+                <div className="p-6 lg:p-8 flex flex-col flex-grow">
+                  <h3 className="text-lg lg:text-xl font-bold text-white mb-3 lg:mb-4 line-clamp-2">
+                    {post.title}
+                  </h3>
+                  <p className="text-sm lg:text-base text-gray-200 mb-4 lg:mb-6 line-clamp-3">
+                    {post.description}
+                  </p>
+                  <div className="mt-auto">
+                    <span className="inline-flex items-center justify-center px-4 lg:px-6 py-2 lg:py-3 bg-[#045694] text-white text-sm lg:text-base font-semibold rounded-full hover:bg-[#056ab4] transition-colors">
+                      {t('home.blog.readMore')}
+                      <FaArrowRight className="ml-2 w-3 h-3 lg:w-4 lg:h-4" />
+                    </span>
                   </div>
-                </article>
+                </div>
               </Link>
             ))}
           </div>

@@ -1,35 +1,38 @@
-import AboutHero from "@/components/AboutHero";
-import Basic from "@/components/Basic";
-import Doctor from "@/components/Doctor";
-import Contact from "@/components/Contact";
+'use client';
+import Doctor from '@/components/Doctor';
+import Basic from '@/components/Basic';
+import Contact from '@/components/Contact';
+import Basic2 from '@/components/Basic2';
+import { useTranslations } from '@/hooks/useTranslations';
 
 export default function About() {
-  const commitmentContent = [
-    "Patient-Centered Care: Your comfort and satisfaction are our top priorities. We take the time to listen to your concerns and create personalized treatment plans that meet your individual needs.",
-    "Advanced Orthodontic Solutions: Staying up-to-date with the latest techniques and technologies, we offer a range of services including clear braces, conventional braces, and clear aligners like Invisalign and OrthoFX.",
-    "Improving Oral Health and Well-being: We believe that orthodontic treatment is not just about straightening teeth but enhancing overall oral health and boosting confidence."
-  ];
-
-  const whyChooseContent = [
-    "Over 10 Years of Experience: With more than a decade of expertise, we have transformed countless smiles in the Denver area.",
-    "Compassionate Team: Our dedicated staff is here to support you every step of the way, building lasting relationships with our patients and their families.",
-    "State-of-the-Art Facility: We utilize cutting-edge technology to provide efficient and effective treatments in a comfortable environment."
-  ];
+  const { t } = useTranslations();
 
   return (
     <main>
-      <AboutHero />
+      <section className="bg-gray-50 py-24">
+        <div className="max-w-[800px] mx-auto px-4 text-center">
+          <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+            {t('about.hero.title')}
+          </h1>
+          <p className="text-xl text-gray-600">
+            {t('about.hero.description')}
+          </p>
+        </div>
+      </section>
+
       <Basic 
-        imageUrl="/images/commitment.jpg"
-        title="Our Commitment to Excellence"
-        description={commitmentContent}
+        imageUrl="clear-braces"
+        title={t('about.mission.title')}
+        description={t('about.mission.items')}
+        withIcons={true}
       />
-      <Basic 
-        imageUrl="/images/why-choose.jpg"
-        title="Why Choose Colorado Braces"
-        description={whyChooseContent}
-        reverse
+
+      <Basic2 
+        title={t('about.values.title')}
+        description={t('about.values.items')}
       />
+
       <Doctor />
       <Contact />
     </main>

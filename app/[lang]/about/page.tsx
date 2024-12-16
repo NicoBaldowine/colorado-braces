@@ -1,28 +1,31 @@
 'use client';
 
-import AboutHero from "@/components/AboutHero";
-import Basic from "@/components/Basic";
-import Doctor from "@/components/Doctor";
-import Contact from "@/components/Contact";
+import Doctor from '@/components/Doctor';
+import Basic from '@/components/Basic';
+import Contact from '@/components/Contact';
+import Basic2 from '@/components/Basic2';
+import AboutHero from '@/components/AboutHero';
 import { useTranslations } from '@/hooks/useTranslations';
 
 export default function About() {
   const { t } = useTranslations();
-  
+
   return (
     <main>
       <AboutHero />
+
       <Basic 
-        imageUrl="/images/commitment.jpg"
-        title={t('about.commitment.title')}
-        description={[t('about.commitment.content')]}
+        imageUrl="mision"
+        title={t('about.mission.title')}
+        description={t('about.mission.items')}
+        withIcons={true}
       />
-      <Basic 
-        imageUrl="/images/why-choose.jpg"
-        title={t('about.whyChoose.title')}
-        description={[t('about.whyChoose.content')]}
-        reverse
+
+      <Basic2 
+        title={t('about.values.title')}
+        description={t('about.values.items')}
       />
+
       <Doctor />
       <Contact />
     </main>

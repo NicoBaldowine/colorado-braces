@@ -1,5 +1,7 @@
 'use client';
 import { useTranslations } from '@/hooks/useTranslations';
+import Image from 'next/image';
+import doctorImage from '@/app/assets/eduardo-garcia.jpg';
 
 export default function Doctor() {
   const { t } = useTranslations();
@@ -9,8 +11,15 @@ export default function Doctor() {
       <div className="max-w-[1350px] mx-auto px-4">
         <div className="max-w-[800px] mx-auto text-center">
           {/* Image */}
-          <div className="w-[200px] h-[200px] lg:w-[300px] lg:h-[300px] mx-auto mb-6 lg:mb-8 rounded-full overflow-hidden bg-gray-200">
-            {/* Replace with actual image */}
+          <div className="w-[200px] h-[200px] lg:w-[300px] lg:h-[300px] mx-auto mb-6 lg:mb-8 rounded-full overflow-hidden relative">
+            <Image
+              src={doctorImage}
+              alt="Dr. Eduardo Garcia"
+              fill
+              priority
+              className="object-cover"
+              sizes="(max-width: 768px) 200px, 300px"
+            />
           </div>
 
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-2">

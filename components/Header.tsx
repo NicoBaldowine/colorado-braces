@@ -28,10 +28,7 @@ export default function Header() {
     { name: t('common.services.clearAligners'), path: "/services/clear-aligners" },
     { name: t('common.services.clearBraces'), path: "/services/clear-braces" },
     { name: t('common.services.conventionalBraces'), path: "/services/conventional-braces" },
-    { name: t('common.services.whitening'), path: "/services/whitening" },
-    { type: 'divider' },
-    { name: t('common.services.invisalign'), path: "/services/invisalign" },
-    { name: t('common.services.orthofx'), path: "/services/orthofx" },
+    { name: t('common.services.whitening'), path: "/services/whitening" }
   ];
 
   return (

@@ -67,18 +67,18 @@ export default function Contact() {
               {/* Social Media */}
               <div className="flex items-center gap-3 lg:gap-4 pt-4 lg:pt-6">
                 <a 
-                  href="#" 
-                  className="w-10 h-10 lg:w-12 lg:h-12 flex items-center justify-center rounded-full bg-[#023A65] text-white hover:bg-[#034b82] transition-colors"
+                  href="https://www.instagram.com/coloradobraces/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="w-10 h-10 lg:w-12 lg:h-12 flex items-center justify-center rounded-full bg-[#023A65] text-white hover:bg-[#034b82] transition-colors"
                 >
                   <FaInstagram className="w-5 h-5 lg:w-6 lg:h-6" />
                 </a>
                 <a 
-                  href="#" 
-                  className="w-10 h-10 lg:w-12 lg:h-12 flex items-center justify-center rounded-full bg-[#023A65] text-white hover:bg-[#034b82] transition-colors"
+                  href="https://www.facebook.com/coloradobraces/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="w-10 h-10 lg:w-12 lg:h-12 flex items-center justify-center rounded-full bg-[#023A65] text-white hover:bg-[#034b82] transition-colors"
                 >
                   <FaFacebook className="w-5 h-5 lg:w-6 lg:h-6" />
                 </a>

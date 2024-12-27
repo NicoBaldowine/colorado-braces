@@ -105,7 +105,7 @@ export default function Footer() {
               <li className="flex items-center gap-2">
                 <FaInstagram className="w-5 h-5 text-[#023A65]" />
                 <a 
-                  href="#" 
+                  href="https://www.instagram.com/coloradobraces/" 
                   className="text-gray-600 hover:text-[#023A65] transition-colors"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -116,7 +116,7 @@ export default function Footer() {
               <li className="flex items-center gap-2">
                 <FaFacebook className="w-5 h-5 text-[#023A65]" />
                 <a 
-                  href="#" 
+                  href="https://www.facebook.com/coloradobraces/" 
                   className="text-gray-600 hover:text-[#023A65] transition-colors"
                   target="_blank"
                   rel="noopener noreferrer"

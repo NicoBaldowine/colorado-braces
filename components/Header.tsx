@@ -29,6 +29,9 @@ export default function Header() {
     { name: t('common.services.clearBraces'), path: "/services/clear-braces" },
     { name: t('common.services.conventionalBraces'), path: "/services/conventional-braces" },
     { name: t('common.services.whitening'), path: "/services/whitening" },
+    { type: 'divider' },
+    { name: t('common.services.invisalign'), path: "/services/invisalign" },
+    { name: t('common.services.orthofx'), path: "/services/orthofx" },
   ];
 
   return (
@@ -81,16 +84,20 @@ export default function Header() {
                   <FaChevronDown className="w-3 h-3 transition-transform group-hover:rotate-180" />
                 </button>
                 <div className="absolute top-full left-0 mt-1 bg-white border border-gray-200 rounded-md py-1 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                  {services.map((service) => (
-                    <Link
-                      key={service.path}
-                      href={`/${lang}${service.path}`}
-                      className={`block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#023A65] transition-colors ${
-                        pathname.includes(service.path) ? "text-[#023A65] bg-gray-50" : ""
-                      }`}
-                    >
-                      {service.name}
-                    </Link>
+                  {services.map((service, index) => (
+                    service.type === 'divider' ? (
+                      <div key={`divider-${index}`} className="my-1 border-t border-gray-200" />
+                    ) : (
+                      <Link
+                        key={service.path}
+                        href={`/${lang}${service.path}`}
+                        className={`block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#023A65] transition-colors ${
+                          pathname.includes(service.path) ? "text-[#023A65] bg-gray-50" : ""
+                        }`}
+                      >
+                        {service.name}
+                      </Link>
+                    )
                   ))}
                 </div>
               </div>
@@ -218,17 +225,21 @@ export default function Header() {
               </Link>
               
               {/* Services Links */}
-              {services.map((service) => (
-                <Link
-                  key={service.path}
-                  href={`/${lang}${service.path}`}
-                  className={`px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#023A65] ${
-                    pathname === `/${lang}${service.path}` ? "text-[#023A65] bg-gray-50" : ""
-                  }`}
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {service.name}
-                </Link>
+              {services.map((service, index) => (
+                service.type === 'divider' ? (
+                  <div key={`divider-${index}`} className="my-1 border-t border-gray-200 mx-4" />
+                ) : (
+                  <Link
+                    key={service.path}
+                    href={`/${lang}${service.path}`}
+                    className={`px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#023A65] ${
+                      pathname === `/${lang}${service.path}` ? "text-[#023A65] bg-gray-50" : ""
+                    }`}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {service.name}
+                  </Link>
+                )
               ))}
 
               <Link 

@@ -23,4 +23,9 @@ export default function RootLayout({
 export const metadata = {
   title: 'Colorado Braces',
   description: 'Expert orthodontic care in Denver',
+  icons: {
+    icon: '/icon.png',
+    shortcut: '/favicon.ico',
+    apple: '/apple-icon.png',
+  },
 };

@@ -44,11 +44,6 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href={`/${lang}/testimonials`} className="text-gray-600 hover:text-[#023A65] transition-colors">
-                  {t('footer.columns.ourSite.links.testimonials')}
-                </Link>
-              </li>
-              <li>
                 <Link href={`/${lang}/blog`} className="text-gray-600 hover:text-[#023A65] transition-colors">
                   {t('footer.columns.ourSite.links.blog')}
                 </Link>
@@ -97,11 +92,6 @@ export default function Footer() {
           <div>
             <h3 className="font-bold text-gray-900 mb-4">{t('footer.columns.resources.title')}</h3>
             <ul className="space-y-3">
-              <li>
-                <Link href={`/${lang}/blog`} className="text-gray-600 hover:text-[#023A65] transition-colors">
-                  {t('footer.columns.resources.links.blog')}
-                </Link>
-              </li>
               <li className="flex items-center gap-2">
                 <FaInstagram className="w-5 h-5 text-[#023A65]" />
                 <a 

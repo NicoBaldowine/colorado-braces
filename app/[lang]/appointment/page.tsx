@@ -26,7 +26,7 @@ export default function Appointment() {
     t('common.services.clearBraces'),
     t('common.services.conventionalBraces'),
     t('common.services.whitening'),
-    "Not sure yet"
+    t('appointment.form.notSure')
   ];
 
   // Get today's date and format it for the date input min attribute

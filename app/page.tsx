@@ -7,8 +7,11 @@ import Services from "@/components/Services";
 import Blog from "@/components/Blog";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import { redirect } from 'next/navigation';
 
 export default function Home() {
+  redirect('/en');
+
   const { t } = useTranslations();
 
   const benefits = t('home.benefits.items');

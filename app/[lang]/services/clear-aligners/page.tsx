@@ -5,6 +5,9 @@ import { FaSmile, FaCheck, FaClock } from 'react-icons/fa';
 import Link from 'next/link';
 import Image from 'next/image';
 import clearAligners from '@/app/assets/clear-aligners.jpg';
+import social1 from '@/app/assets/socials/social-1.png';
+import social2 from '@/app/assets/socials/social-2.png';
+import social3 from '@/app/assets/socials/social-3.png';
 
 export default function ClearAligners() {
   const { t, lang } = useTranslations();
@@ -24,6 +27,38 @@ export default function ClearAligners() {
           </div>
         </div>
       </section>
+
+      {/* Social Proof Section */}
+      <div className="py-12 bg-gray-50">
+        <div className="max-w-[1350px] mx-auto px-4">
+          <div className="flex justify-center items-center gap-12">
+            <div className="w-[150px] h-[75px] relative">
+              <Image
+                src={social1}
+                alt="Clear Aligners Provider 1"
+                fill
+                className="object-contain"
+              />
+            </div>
+            <div className="w-[150px] h-[75px] relative">
+              <Image
+                src={social2}
+                alt="Clear Aligners Provider 2"
+                fill
+                className="object-contain"
+              />
+            </div>
+            <div className="w-[150px] h-[75px] relative">
+              <Image
+                src={social3}
+                alt="Clear Aligners Provider 3"
+                fill
+                className="object-contain"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Benefits Section with Image */}
       <section className="py-24">

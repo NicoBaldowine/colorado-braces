@@ -186,7 +186,7 @@ const translations = {
           description: "Over 10 Years of Exceptional Orthodontic Experience"
         },
         invisalign: {
-          title: "Invisalign & OrthoFX\nProviders",
+          title: "Invisalign, OrthoFX &\nAngel Aligners\nProviders",
           description: "Offering the latest in invisible braces technology for discreet treatment."
         },
         location: {
@@ -397,7 +397,7 @@ const translations = {
         experience: {
           title: "Professional Experience:",
           items: [
-            "Over 10 years of practicing dentistry in Venezuela",
+            "Over 15 years of practicing dentistry",
             "Lectured and shared expertise in several countries",
             "Dedicated to extending his services to the Denver Metro community"
           ]
@@ -998,8 +998,8 @@ const translations = {
           description: "Más de 10 Años de Experiencia Ortodóntica Excepcional"
         },
         invisalign: {
-          title: "Proveedores de Invisalign\ny OrthoFX",
-          description: "Ofrecemos la última tecnología en brackets invisibles para un tratamiento discreto."
+          title: "Proveedores de\nInvisalign, OrthoFX y\nAngel Aligners",
+          description: "Ofrecemos lo último en tecnología de brackets invisibles para un tratamiento discreto."
         },
         location: {
           title: "Conveniente y\nAccesible",
@@ -1209,7 +1209,7 @@ const translations = {
         experience: {
           title: "Experiencia Profesional:",
           items: [
-            "Más de 10 años practicando odontología en Venezuela",
+            "Más de 15 años practicando odontología",
             "Ha dado conferencias y compartido su experiencia en varios países",
             "Dedicado a extender sus servicios a la comunidad del área metropolitana de Denver"
           ]
@@ -1586,7 +1586,7 @@ const translations = {
         selectTime: "Selecciona un horario",
         timeMorning: "Mañana (9AM - 12PM)",
         timeAfternoon: "Tarde (12PM - 5PM)",
-        notSure: "Aún no estoy seguro",
+        notSure: "No estoy seguro aún",
         dateHint: "Por favor selecciona una fecha a partir de mañana"
       },
       successMessage: "¡Gracias! Nos pondremos en contacto contigo pronto para confirmar tu cita.",

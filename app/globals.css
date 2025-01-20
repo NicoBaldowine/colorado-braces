@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap');
 
 @tailwind base;
-@tailwind utilities;
 @tailwind components;
+@tailwind utilities;
+
+/* Add any custom styles here */
 
 :root {
   --foreground-rgb: 0, 0, 0;

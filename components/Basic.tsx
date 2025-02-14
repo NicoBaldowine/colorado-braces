@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import team from '@/app/assets/team.jpg';
+import placecb from '@/app/assets/placecb.jpg';
 import { FaCheckCircle, FaHeart, FaUserMd, FaSmile } from 'react-icons/fa';
 
 interface BasicProps {
@@ -35,7 +35,7 @@ export default function Basic({ imageUrl, title, description, reverse = false, w
           {/* Image */}
           <div className="rounded-lg overflow-hidden h-[500px] relative">
             <Image
-              src={team}
+              src={placecb}
               alt={title}
               fill
               className="object-cover"

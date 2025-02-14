@@ -1,6 +1,7 @@
 import '@/app/globals.css';
 import { Figtree } from 'next/font/google';
 import { Metadata } from 'next'
+import Analytics from './GoogleAnalytics'
 
 const figtree = Figtree({ 
   subsets: ['latin'],
@@ -33,7 +34,12 @@ export default function RootLayout({
 }) {
   return (
     <html className={figtree.variable} lang="en">
-      <body>{children}</body>
+      <head>
+        <Analytics />
+      </head>
+      <body>
+        {children}
+      </body>
     </html>
   );
 }

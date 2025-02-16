@@ -38,9 +38,10 @@ export const handler: Handler = async (event) => {
       from: 'Colorado Braces <onboarding@resend.dev>',
       to: ['office@colorado-braces.com'],
       reply_to: email,
-      subject: 'New Appointment Request',
+      subject: 'New Appointment Request from Colorado-Braces.com',
+      text: `New appointment request from ${firstName} ${lastName}`,
       html: `
-        <h2>New Appointment Request</h2>
+        <h2>New Appointment Request from Colorado-Braces.com</h2>
         <p><strong>Name:</strong> ${firstName} ${lastName}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Phone:</strong> ${phone}</p>

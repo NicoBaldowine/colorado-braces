@@ -997,7 +997,7 @@ export const translations = {
       whyChoose: {
         title: "¿Por Qué Elegir Colorado Braces?",
         expert: {
-          title: "Cuidado Ortodóntico\nExperto",
+          title: "Atención Ortodóntica\nExperto",
           description: "Más de 10 Años de Experiencia Ortodóntica Excepcional"
         },
         invisalign: {

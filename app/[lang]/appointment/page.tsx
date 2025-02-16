@@ -38,9 +38,10 @@ export default function Appointment() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    console.log('Starting form submission...');
     
     try {
-      const response = await fetch('/api/send-appointment', {
+      const response = await fetch('https://colorado-braces.netlify.app/api/send-appointment', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

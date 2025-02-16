@@ -180,19 +180,8 @@ const translations = {
         ]
       },
       whyChoose: {
-        title: "Why Choose Colorado Braces?",
-        expert: {
-          title: "Expert Orthodontic Care",
-          description: "Over 10 Years of Exceptional Orthodontic Experience"
-        },
-        invisalign: {
-          title: "Invisalign, OrthoFX &\nAngel Aligners\nProviders",
-          description: "Offering the latest in invisible braces technology for discreet treatment."
-        },
-        location: {
-          title: "Convenient and\nAccessible",
-          description: "Central Denver Location: Easy to reach with flexible scheduling options."
-        }
+        title: "Why Choose Us",
+        description: "We provide comprehensive orthodontic care with a focus on patient comfort and satisfaction"
       },
       testimonials: {
         title: "What Our Patients Say",

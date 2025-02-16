@@ -1609,6 +1609,13 @@ export function useTranslations() {
       
       for (const k of keys) {
         if (!value || !value[k]) {
+          // Special handling for whyChoose section
+          if (key.startsWith('home.whyChoose')) {
+            const section = key.split('.')[2]; // expert, invisalign, or location
+            const field = key.split('.')[3];   // title or description
+            return translations[lang].home.whyChoose.cards[section][field];
+          }
+          console.error(`Translation missing for key: ${key}`);
           return key;
         }
         value = value[k];
@@ -1616,6 +1623,7 @@ export function useTranslations() {
       
       return value as string;
     } catch (error) {
+      console.error(`Error getting translation for key: ${key}`, error);
       return key;
     }
   };

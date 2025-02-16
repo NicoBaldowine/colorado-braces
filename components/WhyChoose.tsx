@@ -7,20 +7,26 @@ export default function WhyChoose() {
 
   const cards = [
     {
-      icon: <FaUserMd className="w-6 h-6 lg:w-8 lg:h-8" />,
+      icon: FaUserMd,
       title: t('home.whyChoose.expert.title'),
       description: t('home.whyChoose.expert.description')
     },
     {
-      icon: <FaTooth className="w-6 h-6 lg:w-8 lg:h-8" />,
-      title: t('home.whyChoose.invisalign.title'),
-      description: t('home.whyChoose.invisalign.description')
+      icon: FaTooth,
+      title: t('home.whyChoose.providers.title'),
+      description: t('home.whyChoose.providers.description')
     },
     {
-      icon: <FaMapMarkerAlt className="w-6 h-6 lg:w-8 lg:h-8" />,
+      icon: FaMapMarkerAlt,
       title: t('home.whyChoose.location.title'),
       description: t('home.whyChoose.location.description')
     }
+  ];
+
+  const icons = [
+    <FaUserMd className="w-6 h-6 lg:w-8 lg:h-8" />,
+    <FaTooth className="w-6 h-6 lg:w-8 lg:h-8" />,
+    <FaMapMarkerAlt className="w-6 h-6 lg:w-8 lg:h-8" />
   ];
 
   return (
@@ -36,7 +42,7 @@ export default function WhyChoose() {
             className="flex flex-col items-center text-center p-6 lg:p-10 rounded-2xl bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] hover:shadow-[0_2px_15px_-3px_rgba(0,0,0,0.1),0_10px_20px_-2px_rgba(0,0,0,0.06)] transition-all duration-300"
           >
             <div className="text-[#023A65] mb-4 lg:mb-6">
-              {card.icon}
+              {icons[index]}
             </div>
             <h3 className="text-xl lg:text-2xl font-bold text-gray-900 mb-3 lg:mb-4 whitespace-pre-line">
               {card.title}

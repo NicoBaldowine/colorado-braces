@@ -2,6 +2,7 @@
 import { useTranslations } from '@/hooks/useTranslations';
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import WhyChoose from "@/components/WhyChoose";
 import Benefits from "@/components/Benefits";
 import Services from "@/components/Services";
 import Blog from "@/components/Blog";
@@ -43,6 +44,7 @@ export default function Home() {
           description={t('home.hero.description')}
           ctaText={t('home.hero.cta')}
         />
+        <WhyChoose />
         <Benefits 
           title={t('home.benefits.title')}
           benefits={benefits}

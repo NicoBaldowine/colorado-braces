@@ -48,24 +48,27 @@ export default function Appointment() {
         body: JSON.stringify(formData),
       });
 
-      if (response.ok) {
-        setSubmitStatus({
-          type: "success",
-          message: t('appointment.successMessage')
-        });
-        setFormData({
-          firstName: "",
-          lastName: "",
-          email: "",
-          phone: "",
-          service: "",
-          preferredDate: "",
-          preferredTime: ""
-        });
-      } else {
-        throw new Error();
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send email');
       }
-    } catch (_error) {
+
+      setSubmitStatus({
+        type: "success",
+        message: t('appointment.successMessage')
+      });
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        service: "",
+        preferredDate: "",
+        preferredTime: ""
+      });
+    } catch (error) {
+      console.error('Form submission error:', error);
       setSubmitStatus({
         type: "error",
         message: t('appointment.errorMessage')

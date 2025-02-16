@@ -181,7 +181,21 @@ export const translations = {
       },
       whyChoose: {
         title: "Why Choose Us",
-        description: "We provide comprehensive orthodontic care with a focus on patient comfort and satisfaction"
+        description: "We provide comprehensive orthodontic care with a focus on patient comfort and satisfaction",
+        cards: {
+          expert: {
+            title: "Expert Orthodontic Care",
+            description: "Over 10 Years of Exceptional Orthodontic Experience"
+          },
+          providers: {
+            title: "Invisalign, OrthoFX & Angel Aligners Providers",
+            description: "Offering the latest in invisible braces technology for discreet treatment."
+          },
+          location: {
+            title: "Convenient and Accessible",
+            description: "Central Denver Location: Easy to reach with flexible scheduling options."
+          }
+        }
       },
       testimonials: {
         title: "What Our Patients Say",

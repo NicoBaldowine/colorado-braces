@@ -4,11 +4,27 @@ import { Resend } from 'resend';
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export const handler: Handler = async (event) => {
-  // Only allow POST requests
+  // Add CORS headers
+  const headers = {
+    'Access-Control-Allow-Origin': 'https://colorado-braces.com',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS'
+  };
+
+  // Handle preflight requests
+  if (event.httpMethod === 'OPTIONS') {
+    return {
+      statusCode: 200,
+      headers,
+      body: ''
+    };
+  }
+
   if (event.httpMethod !== 'POST') {
     return {
       statusCode: 405,
-      body: JSON.stringify({ error: 'Method not allowed' }),
+      headers,
+      body: JSON.stringify({ error: 'Method not allowed' })
     };
   }
 
@@ -35,12 +51,14 @@ export const handler: Handler = async (event) => {
 
     return {
       statusCode: 200,
+      headers,
       body: JSON.stringify({ message: 'Email sent successfully', data })
     };
   } catch (error: any) {
     console.error('Error sending email:', error);
     return {
       statusCode: 500,
+      headers,
       body: JSON.stringify({ error: error.message || 'Failed to send email' })
     };
   }

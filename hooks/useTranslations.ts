@@ -1,7 +1,7 @@
 'use client';
 import { usePathname } from 'next/navigation';
 
-const translations = {
+export const translations = {
   en: {
     common: {
       navigation: {

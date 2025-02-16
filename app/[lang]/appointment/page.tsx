@@ -41,7 +41,7 @@ export default function Appointment() {
     console.log('Starting form submission...');
     
     try {
-      const response = await fetch('https://colorado-braces.netlify.app/api/send-appointment', {
+      const response = await fetch('/.netlify/functions/send-appointment', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

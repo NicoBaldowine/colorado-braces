@@ -35,8 +35,8 @@ export const handler: Handler = async (event) => {
     const { firstName, lastName, email, phone, service, preferredDate, preferredTime } = body;
 
     const data = await resend.emails.send({
-      from: 'Colorado Braces <office@colorado-braces.com>',
-      to: ['office@colorado-braces.com'],
+      from: 'Colorado Braces <onboarding@resend.dev>',
+      to: ['nbaldovino5@gmail.com'],
       subject: 'New Appointment Request',
       html: `
         <h2>New Appointment Request</h2>
@@ -48,6 +48,8 @@ export const handler: Handler = async (event) => {
         <p><strong>Preferred Time:</strong> ${preferredTime}</p>
       `
     });
+
+    console.log('Email sent response:', data);
 
     return {
       statusCode: 200,

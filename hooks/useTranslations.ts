@@ -996,17 +996,19 @@ export const translations = {
       },
       whyChoose: {
         title: "¿Por Qué Elegir Colorado Braces?",
-        expert: {
-          title: "Atención Ortodóntica\nExperto",
-          description: "Más de 10 Años de Experiencia Ortodóntica Excepcional"
-        },
-        invisalign: {
-          title: "Proveedores de\nInvisalign, OrthoFX y\nAngel Aligners",
-          description: "Ofrecemos lo último en tecnología de brackets invisibles para un tratamiento discreto."
-        },
-        location: {
-          title: "Conveniente y\nAccesible",
-          description: "Ubicación Central en Denver: Fácil de llegar con opciones de horarios flexibles."
+        cards: {
+          expert: {
+            title: "Atención Ortodóntica Experto",
+            description: "Más de 10 Años de Experiencia Ortodóntica Excepcional"
+          },
+          providers: {
+            title: "Especialistas en Ortodoncia",
+            description: "Doctores certificados con amplia experiencia en tratamientos de ortodoncia"
+          },
+          location: {
+            title: "Conveniente y Accesible",
+            description: "Ubicación Central en Denver: Fácil de llegar con opciones de horarios flexibles."
+          }
         }
       },
       testimonials: {

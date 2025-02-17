@@ -167,21 +167,20 @@ export default function Header() {
           </div>
 
           {/* Mobile Right Section */}
-          <div className="flex lg:hidden items-center gap-3">
-            {/* Phone Icon */}
+          <div className="flex md:hidden ml-auto items-center space-x-4">
             <a 
-              href="tel:+13039914455" 
-              className="text-gray-700 hover:text-[#023A65] p-2 rounded-md transition-colors"
+              href="tel:3039914455" 
+              className="p-2 text-primary"
+              aria-label="Call us"
             >
               <FaPhone className="w-5 h-5" />
             </a>
 
-            {/* Mobile Appointment Button */}
-            <Link 
-              href={`/${lang}/appointment`}
-              className="bg-[#023A65] text-white px-4 py-2 text-sm rounded-full hover:bg-[#034b82] transition-colors whitespace-nowrap"
+            <Link
+              href="/appointment"
+              className="px-4 py-2 bg-primary text-white rounded-full hover:bg-primary-dark transition-colors text-sm whitespace-nowrap"
             >
-              {t('common.navigation.appointment')}
+              {lang === 'es' ? 'Agenda Ya' : 'Book Now'}
             </Link>
 
             {/* Burger Menu Button */}

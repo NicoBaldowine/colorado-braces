@@ -5,9 +5,8 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
   try {
-    // Log the API key existence (not the actual key)
-    console.log('API Key exists:', !!process.env.RESEND_API_KEY);
-
+    console.log('Starting email send process...');
+    
     if (!process.env.RESEND_API_KEY) {
       console.error('Missing RESEND_API_KEY');
       return NextResponse.json(
@@ -17,18 +16,15 @@ export async function POST(request: Request) {
     }
 
     const body = await request.json();
-    console.log('Received form data:', {
+    console.log('Form data received:', {
       ...body,
-      email: body.email ? '***@***.com' : undefined // Hide actual email
+      email: '***@***.com' // Masked for logging
     });
     
-    const data = await resend.emails.send({
+    // Let's try with just your email first
+    const emailData = {
       from: 'Colorado Braces <office@colorado-braces.com>',
-      to: [
-        'office@colorado-braces.com',
-        'nbaldovino5@gmail.com',
-        'eduardoeegg@hotmail.com'
-      ],
+      to: ['nbaldovino5@gmail.com'], // Testing with just your email
       reply_to: body.email,
       subject: 'New Appointment Request from Colorado-Braces.com',
       html: `
@@ -40,9 +36,16 @@ export async function POST(request: Request) {
         <p><strong>Preferred Date:</strong> ${body.preferredDate}</p>
         <p><strong>Preferred Time:</strong> ${body.preferredTime}</p>
       `
+    };
+
+    console.log('Attempting to send email with config:', {
+      ...emailData,
+      to: emailData.to.join(', ') // Log recipients
     });
 
-    console.log('Resend response:', data);
+    const data = await resend.emails.send(emailData);
+
+    console.log('Resend API Response:', data);
 
     return NextResponse.json(
       { message: 'Email sent successfully', data },

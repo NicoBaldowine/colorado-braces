@@ -90,9 +90,11 @@ export const handler: Handler = async (event) => {
       };
     }
 
+    const recipientEmail = 'eduardoeegg@hotmail.com';
+
     const emailData = {
       from: 'Colorado Braces <onboarding@resend.dev>',
-      to: ['office@colorado-braces.com'], // Back to single recipient that worked
+      to: [recipientEmail],
       reply_to: email,
       subject: 'New Appointment Request from Colorado-Braces.com',
       html: `

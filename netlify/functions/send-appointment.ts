@@ -117,13 +117,27 @@ Preferred Time: ${preferredTime}
 
     console.log('Attempting to send email with config:', {
       from: emailData.from,
-      to: emailData.to,
+      to: emailData.to.join(', '), // Log all recipients
       subject: emailData.subject
     });
 
     try {
       const data = await resend.emails.send(emailData);
       console.log('Resend API Success Response:', data);
+      
+      // Let's try sending to each recipient separately as a fallback
+      if (!data.id) {
+        console.log('Trying individual sends...');
+        const individualSends = await Promise.all(
+          emailData.to.map(recipient => 
+            resend.emails.send({
+              ...emailData,
+              to: [recipient]
+            })
+          )
+        );
+        console.log('Individual sends results:', individualSends);
+      }
       
       return {
         statusCode: 200,
@@ -133,7 +147,8 @@ Preferred Time: ${preferredTime}
           data,
           debug: {
             apiKeyExists: !!process.env.RESEND_API_KEY,
-            apiKeyLength: process.env.RESEND_API_KEY?.length
+            apiKeyLength: process.env.RESEND_API_KEY?.length,
+            recipients: emailData.to
           }
         })
       };
@@ -142,7 +157,8 @@ Preferred Time: ${preferredTime}
         message: sendError.message,
         name: sendError.name,
         code: sendError.code,
-        statusCode: sendError.statusCode
+        statusCode: sendError.statusCode,
+        recipients: emailData.to
       });
       throw sendError;
     }

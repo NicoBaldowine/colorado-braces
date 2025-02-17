@@ -92,9 +92,9 @@ export const handler: Handler = async (event) => {
 
     const emailData = {
       from: 'Colorado Braces <onboarding@resend.dev>',
-      to: ['eduardoeegg@hotmail.com', 'nbaldovino5@gmail.com'], // Multiple recipients
+      to: ['nbaldovino5@gmail.com'], // Back to single recipient that worked
       reply_to: email,
-      subject: 'New Appointment Request from Colorado-Braces.com', // Removed "Test -" prefix
+      subject: 'New Appointment Request from Colorado-Braces.com',
       html: `
         <h2>New Appointment Request from Colorado-Braces.com</h2>
         <p><strong>Name:</strong> ${firstName} ${lastName}</p>
@@ -112,7 +112,7 @@ Phone: ${phone}
 Service: ${service}
 Preferred Date: ${preferredDate}
 Preferred Time: ${preferredTime}
-      `.trim() // Fallback plain text version
+      `.trim()
     };
 
     console.log('Attempting to send email with config:', {

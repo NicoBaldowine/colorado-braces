@@ -165,10 +165,10 @@ export default function Header() {
 
               {/* Appointment Button */}
               <Link
-                href="/appointment"
+                href={`/${lang}/appointment`}
                 className="px-6 py-2 bg-primary text-white rounded-full hover:bg-primary-dark transition-colors whitespace-nowrap"
               >
-                Make an Appointment
+                {lang === 'es' ? 'Agendar Cita' : 'Make an Appointment'}
               </Link>
             </div>
           </div>
@@ -184,7 +184,7 @@ export default function Header() {
             </a>
 
             <Link
-              href="/appointment"
+              href={`/${lang}/appointment`}
               className="px-4 py-2 bg-primary text-white rounded-full hover:bg-primary-dark transition-colors text-sm whitespace-nowrap"
             >
               {lang === 'es' ? 'Agenda Ya' : 'Book Now'}

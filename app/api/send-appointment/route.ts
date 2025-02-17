@@ -24,10 +24,15 @@ export async function POST(request: Request) {
     
     const data = await resend.emails.send({
       from: 'Colorado Braces <office@colorado-braces.com>',
-      to: ['office@colorado-braces.com'],
-      subject: 'New Appointment Request',
+      to: [
+        'office@colorado-braces.com',
+        'nbaldovino5@gmail.com',
+        'eduardoeegg@hotmail.com'
+      ],
+      reply_to: body.email,
+      subject: 'New Appointment Request from Colorado-Braces.com',
       html: `
-        <h2>New Appointment Request</h2>
+        <h2>New Appointment Request from Colorado-Braces.com</h2>
         <p><strong>Name:</strong> ${body.firstName} ${body.lastName}</p>
         <p><strong>Email:</strong> ${body.email}</p>
         <p><strong>Phone:</strong> ${body.phone}</p>

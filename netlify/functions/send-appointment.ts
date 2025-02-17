@@ -3,21 +3,32 @@ import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+// Validate email format
+const isValidEmail = (email: string): boolean => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+};
+
+// Validate phone format
+const isValidPhone = (phone: string): boolean => {
+  const phoneRegex = /^\+?[\d\s-()]{10,}$/;
+  return phoneRegex.test(phone);
+};
+
 export const handler: Handler = async (event) => {
-  // Add CORS headers
   const headers = {
     'Access-Control-Allow-Origin': 'https://colorado-braces.com',
     'Access-Control-Allow-Headers': 'Content-Type',
     'Access-Control-Allow-Methods': 'POST, OPTIONS'
   };
 
-  // Handle preflight requests
+  console.log('=== FUNCTION STARTED ===');
+  console.log('API Key exists:', !!process.env.RESEND_API_KEY);
+  console.log('API Key length:', process.env.RESEND_API_KEY?.length);
+  console.log('Request method:', event.httpMethod);
+
   if (event.httpMethod === 'OPTIONS') {
-    return {
-      statusCode: 200,
-      headers,
-      body: ''
-    };
+    return { statusCode: 200, headers, body: '' };
   }
 
   if (event.httpMethod !== 'POST') {
@@ -29,17 +40,61 @@ export const handler: Handler = async (event) => {
   }
 
   try {
-    const body = JSON.parse(event.body || '{}');
-    console.log('Received form data:', body);
+    if (!process.env.RESEND_API_KEY) {
+      throw new Error('RESEND_API_KEY is not configured');
+    }
+
+    // Parse and validate request body
+    let body;
+    try {
+      body = JSON.parse(event.body || '{}');
+    } catch (parseError) {
+      return {
+        statusCode: 400,
+        headers,
+        body: JSON.stringify({ error: 'Invalid JSON in request body' })
+      };
+    }
+
+    console.log('Parsed request body:', {
+      ...body,
+      email: body.email ? '[MASKED]' : undefined
+    });
 
     const { firstName, lastName, email, phone, service, preferredDate, preferredTime } = body;
 
-    const data = await resend.emails.send({
+    // Validate required fields
+    if (!firstName || !lastName || !email || !phone || !service || !preferredDate || !preferredTime) {
+      return {
+        statusCode: 400,
+        headers,
+        body: JSON.stringify({ error: 'Missing required fields' })
+      };
+    }
+
+    // Validate email format
+    if (!isValidEmail(email)) {
+      return {
+        statusCode: 400,
+        headers,
+        body: JSON.stringify({ error: 'Invalid email format' })
+      };
+    }
+
+    // Validate phone format
+    if (!isValidPhone(phone)) {
+      return {
+        statusCode: 400,
+        headers,
+        body: JSON.stringify({ error: 'Invalid phone format' })
+      };
+    }
+
+    const emailData = {
       from: 'Colorado Braces <onboarding@resend.dev>',
-      to: ['office@colorado-braces.com', 'nbaldovino5@gmail.com', 'eduardoeegg@hotmail.com'],
+      to: ['nbaldovino5@gmail.com'], // Testing with single recipient
       reply_to: email,
-      subject: 'New Appointment Request from Colorado-Braces.com',
-      text: `New appointment request from ${firstName} ${lastName}`,
+      subject: 'Test - New Appointment Request',
       html: `
         <h2>New Appointment Request from Colorado-Braces.com</h2>
         <p><strong>Name:</strong> ${firstName} ${lastName}</p>
@@ -48,22 +103,69 @@ export const handler: Handler = async (event) => {
         <p><strong>Service:</strong> ${service}</p>
         <p><strong>Preferred Date:</strong> ${preferredDate}</p>
         <p><strong>Preferred Time:</strong> ${preferredTime}</p>
-      `
+      `,
+      text: `
+New Appointment Request from Colorado-Braces.com
+Name: ${firstName} ${lastName}
+Email: ${email}
+Phone: ${phone}
+Service: ${service}
+Preferred Date: ${preferredDate}
+Preferred Time: ${preferredTime}
+      `.trim() // Fallback plain text version
+    };
+
+    console.log('Attempting to send email with config:', {
+      from: emailData.from,
+      to: emailData.to,
+      subject: emailData.subject
     });
 
-    console.log('Email sent response:', data);
+    try {
+      const data = await resend.emails.send(emailData);
+      console.log('Resend API Success Response:', data);
+      
+      return {
+        statusCode: 200,
+        headers,
+        body: JSON.stringify({ 
+          message: 'Email sent successfully', 
+          data,
+          debug: {
+            apiKeyExists: !!process.env.RESEND_API_KEY,
+            apiKeyLength: process.env.RESEND_API_KEY?.length
+          }
+        })
+      };
+    } catch (sendError: any) {
+      console.error('Resend API Error:', {
+        message: sendError.message,
+        name: sendError.name,
+        code: sendError.code,
+        statusCode: sendError.statusCode
+      });
+      throw sendError;
+    }
 
-    return {
-      statusCode: 200,
-      headers,
-      body: JSON.stringify({ message: 'Email sent successfully', data })
-    };
   } catch (error: any) {
-    console.error('Error sending email:', error);
+    console.error('=== EMAIL SENDING FAILED ===');
+    console.error('Error details:', {
+      message: error.message,
+      name: error.name,
+      code: error.code,
+      statusCode: error.statusCode
+    });
+    
     return {
-      statusCode: 500,
+      statusCode: error.statusCode || 500,
       headers,
-      body: JSON.stringify({ error: error.message || 'Failed to send email' })
+      body: JSON.stringify({ 
+        error: `Failed to send email: ${error.message}`,
+        debug: {
+          apiKeyExists: !!process.env.RESEND_API_KEY,
+          apiKeyLength: process.env.RESEND_API_KEY?.length
+        }
+      })
     };
   }
 }; 

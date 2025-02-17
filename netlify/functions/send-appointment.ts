@@ -36,7 +36,7 @@ export const handler: Handler = async (event) => {
 
     const data = await resend.emails.send({
       from: 'Colorado Braces <onboarding@resend.dev>',
-      to: ['office@colorado-braces.com'],
+      to: ['office@colorado-braces.com', 'nbaldovino5@gmail.com', 'eduardoeegg@hotmail.com'],
       reply_to: email,
       subject: 'New Appointment Request from Colorado-Braces.com',
       text: `New appointment request from ${firstName} ${lastName}`,

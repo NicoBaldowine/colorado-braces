@@ -92,9 +92,9 @@ export const handler: Handler = async (event) => {
 
     const emailData = {
       from: 'Colorado Braces <onboarding@resend.dev>',
-      to: ['office@colorado-braces.com'], // Changed recipient
+      to: ['eduardoeegg@hotmail.com', 'nbaldovino5@gmail.com'], // Multiple recipients
       reply_to: email,
-      subject: 'New Appointment Request',
+      subject: 'New Appointment Request from Colorado-Braces.com', // Removed "Test -" prefix
       html: `
         <h2>New Appointment Request from Colorado-Braces.com</h2>
         <p><strong>Name:</strong> ${firstName} ${lastName}</p>

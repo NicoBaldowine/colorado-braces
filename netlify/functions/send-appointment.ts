@@ -90,7 +90,7 @@ export const handler: Handler = async (event) => {
       };
     }
 
-    const recipientEmail = 'eduardoeegg@hotmail.com';
+    const recipientEmail = 'nbaldovino5@gmail.com';
 
     const emailData = {
       from: 'Colorado Braces <onboarding@resend.dev>',

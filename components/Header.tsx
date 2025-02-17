@@ -14,6 +14,7 @@ export default function Header() {
   const { t, lang } = useTranslations();
   const [selectedLanguage, setSelectedLanguage] = useState('English');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLangOpen, setIsLangOpen] = useState(false);
 
   useEffect(() => {
     setSelectedLanguage(lang === 'es' ? t('common.languages.spanish') : t('common.languages.english'));
@@ -124,44 +125,50 @@ export default function Header() {
             {/* Desktop Right Section */}
             <div className="flex items-center gap-4">
               {/* Language Selector */}
-              <div className="relative group">
-                <button className="flex items-center gap-2 text-gray-700 hover:text-[#023A65] hover:bg-gray-50 px-2 py-2 rounded-md transition-colors">
-                  {selectedLanguage}
-                  <FaChevronDown className="w-3 h-3 transition-transform group-hover:rotate-180" />
+              <div className="relative">
+                <button
+                  className="flex items-center space-x-2 text-gray-600 hover:text-primary"
+                  onClick={() => setIsLangOpen(!isLangOpen)}
+                >
+                  <span>{lang === 'es' ? 'Español' : 'English'}</span>
+                  <FaChevronDown className={`w-3 h-3 transform transition-transform ${isLangOpen ? 'rotate-180' : ''}`} />
                 </button>
-                <div className="absolute top-full right-0 mt-1 bg-white border border-gray-200 rounded-md py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                  {languages.map((lang) => (
-                    <button
-                      key={lang.code}
-                      onClick={() => {
-                        const currentPath = pathname || '/';
-                        const pathWithoutLang = currentPath.replace(/^\/[a-z]{2}/, '');
-                        const newPath = `/${lang.code}${pathWithoutLang}`;
-                        window.location.href = newPath;
-                      }}
-                      className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#023A65] transition-colors text-left"
+              
+                {isLangOpen && (
+                  <div className="absolute top-full mt-1 bg-white shadow-lg rounded-md py-2 w-32">
+                    <Link 
+                      href="/" 
+                      className="block px-4 py-2 hover:bg-gray-100"
+                      onClick={() => setIsLangOpen(false)}
                     >
-                      {lang.name}
-                    </button>
-                  ))}
-                </div>
+                      English
+                    </Link>
+                    <Link 
+                      href="/es" 
+                      className="block px-4 py-2 hover:bg-gray-100"
+                      onClick={() => setIsLangOpen(false)}
+                    >
+                      Español
+                    </Link>
+                  </div>
+                )}
               </div>
 
-              {/* Phone */}
+              {/* Phone Number with Icon */}
               <a 
-                href="tel:+13039914455" 
-                className="flex items-center gap-2 text-gray-700 hover:text-[#023A65] hover:bg-gray-50 px-3 py-2 rounded-md transition-colors"
+                href="tel:3039914455" 
+                className="flex items-center space-x-2 text-gray-600 hover:text-primary"
               >
                 <FaPhone className="w-4 h-4" />
                 <span>(303) 991-4455</span>
               </a>
 
               {/* Appointment Button */}
-              <Link 
-                href={`/${lang}/appointment`}
-                className="bg-[#023A65] text-white px-5 py-2 rounded-full hover:bg-[#034b82] transition-colors"
+              <Link
+                href="/appointment"
+                className="px-6 py-2 bg-primary text-white rounded-full hover:bg-primary-dark transition-colors whitespace-nowrap"
               >
-                {t('common.navigation.appointment')}
+                Make an Appointment
               </Link>
             </div>
           </div>

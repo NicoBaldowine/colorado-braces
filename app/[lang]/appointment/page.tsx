@@ -41,7 +41,7 @@ export default function Appointment() {
     console.log('Starting form submission...');
     
     try {
-      const response = await fetch('/.netlify/functions/send-appointment', {
+      const response = await fetch('/api/send-appointment', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -17,7 +17,7 @@ export async function POST(request: Request) {
 
     const emailData = {
       from: 'Colorado Braces <office@colorado-braces.com>',
-      to: ['nbaldovino5@gmail.com'],
+      to: ['office@colorado-braces.com'],
       reply_to: body.email,
       subject: 'New Appointment Request from Colorado-Braces.com',
       html: `

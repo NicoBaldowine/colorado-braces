@@ -27,7 +27,7 @@ export const translations = {
     home: {
       hero: {
         title: "Transform Your Smile with Colorado Braces",
-        description: "Experience exceptional orthodontic care in Denver with our expert team. Specializing in Invisalign & OrthoFX, we're dedicated to creating beautiful, healthy smiles that last a lifetime.",
+        description: "Experience exceptional orthodontic care in Denver with our expert team. Specializing in Aligner Therapy, we're dedicated to creating beautiful, healthy smiles that last a lifetime.",
         cta: "Schedule Free Consultation"
       },
       benefits: {

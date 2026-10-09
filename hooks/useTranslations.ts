@@ -198,30 +198,7 @@ export const translations = {
         }
       },
       testimonials: {
-        title: "What Our Patients Say",
-        items: [
-          {
-            title: "Loving My Clear Aligners",
-            description: "Colorado Braces made my smile transformation easy. The clear aligners are virtually invisible and simple to use—no one even notices them!",
-            author: "Jessica H.",
-            location: "Lowry Denver",
-            initials: "JH"
-          },
-          {
-            title: "Perfect for My Busy Schedule",
-            description: "The clear aligners fit perfectly into my hectic life. They're fast, efficient, and I didn't have to change my routine at all.",
-            author: "Michael T.",
-            location: "Central Park, Denver",
-            initials: "MT"
-          },
-          {
-            title: "Exceptional Service at Colorado Braces",
-            description: "The team at Colorado Braces exceeded my expectations. Their friendly staff made the entire process smooth and stress-free. I love my new smile!",
-            author: "Emily R.",
-            location: "Park Hill, Denver",
-            initials: "ER"
-          }
-        ]
+        title: "What Our Patients Say"
       },
       faq: {
         title: "Frequently Asked Questions",
@@ -1012,30 +989,7 @@ export const translations = {
         }
       },
       testimonials: {
-        title: "Lo Que Dicen Nuestros Pacientes",
-        items: [
-          {
-            title: "Encantada con Mis Alineadores Transparentes",
-            description: "Colorado Braces hizo que la transformación de mi sonrisa fuera fácil. ¡Los alineadores son prácticamente invisibles y fáciles de usar, nadie los nota!",
-            author: "Jessica H.",
-            location: "Lowry Denver",
-            initials: "JH"
-          },
-          {
-            title: "Perfecto para Mi Agenda Ocupada",
-            description: "Los alineadores transparentes se adaptan perfectamente a mi vida agitada. Son rápidos, eficientes y no tuve que cambiar mi rutina en absoluto.",
-            author: "Michael T.",
-            location: "Central Park, Denver",
-            initials: "MT"
-          },
-          {
-            title: "Servicio Excepcional en Colorado Braces",
-            description: "El equipo de Colorado Braces superó mis expectativas. Su personal amable hizo que todo el proceso fuera fluido y sin estrés. ¡Me encanta mi nueva sonrisa!",
-            author: "Emily R.",
-            location: "Park Hill, Denver",
-            initials: "ER"
-          }
-        ]
+        title: "Lo Que Dicen Nuestros Pacientes"
       },
       faq: {
         title: "Preguntas Frecuentes",

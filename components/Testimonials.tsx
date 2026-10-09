@@ -1,55 +1,144 @@
 'use client';
+
+import { useEffect, useState } from 'react';
+import { FaChevronLeft, FaChevronRight, FaPause, FaPlay, FaStar } from 'react-icons/fa';
 import { useTranslations } from '@/hooks/useTranslations';
-import Image from 'next/image';
-import testimonial1 from '@/app/assets/testimonial1.jpg';
-import testimonial2 from '@/app/assets/testimonial2.jpg';
-import testimonial3 from '@/app/assets/testimonial3.jpg';
+
+// Short, unedited reviews from the Colorado Braces Google Maps business profile.
+// This is a curated snapshot, not a live Google feed.
+const reviews = [
+  {
+    author: 'Nate Andorsky',
+    text: "Top notch! Can't recommend enough, Dr. Garcia provided excellent care and has great bedside manner.",
+  },
+  {
+    author: 'Charlyn Moss',
+    text: 'I had a great experience correcting my smile with Colorado Braces!',
+  },
+  {
+    author: 'Oceane Andreis',
+    text: 'A really sweet and attentive team. I felt in good hands the whole way through!',
+  },
+  {
+    author: 'Kristen Johnson',
+    text: 'Dr. Garcia and his staff are amazing! He is very caring and talented. I highly recommend Dr. Garcia for any orthodontic needs!',
+  },
+];
+
+const googleReviewsUrl =
+  'https://www.google.com/maps/place/Colorado+Braces/@39.7049671,-104.9417544,17z/data=!3m1!5s0x876c7e8061db79e7:0xbde18871204a939c!4m8!3m7!1s0xa27f039dea1dd551:0x9f1a56be30a348f0!8m2!3d39.7049671!4d-104.9417544!9m1!1b1!16s%2Fg%2F11tsmh7v69';
 
 export default function Testimonials() {
-  const { t } = useTranslations();
-  const testimonials = t('home.testimonials.items');
-  
-  const testimonialImages = [testimonial1, testimonial2, testimonial3];
+  const { t, lang } = useTranslations();
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const [interacting, setInteracting] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
+  const spanish = lang === 'es';
+
+  useEffect(() => {
+    const media = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const update = () => setReducedMotion(media.matches);
+    update();
+    media.addEventListener('change', update);
+    return () => media.removeEventListener('change', update);
+  }, []);
+
+  useEffect(() => {
+    if (paused || interacting || reducedMotion) return;
+    const timer = window.setInterval(() => {
+      setActiveIndex((index) => (index + 1) % reviews.length);
+    }, 11000);
+    return () => window.clearInterval(timer);
+  }, [activeIndex, paused, interacting, reducedMotion]);
+
+  const review = reviews[activeIndex];
 
   return (
-    <section className="py-24 bg-gray-50">
-      <div className="max-w-[1350px] mx-auto px-4">
-        <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-8 lg:mb-16">
+    <section className="bg-gray-50 py-20 lg:py-24" aria-label={t('home.testimonials.title')}>
+      <div className="mx-auto max-w-[1350px] px-4">
+        <h2 className="mb-8 text-3xl font-bold text-gray-900 lg:mb-12 lg:text-4xl">
           {t('home.testimonials.title')}
         </h2>
 
-        <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-          {testimonials.map((testimonial, index) => (
-            <div 
-              key={index} 
-              className="flex flex-col items-start p-6 lg:p-8 bg-white rounded-2xl shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] hover:shadow-[0_2px_15px_-3px_rgba(0,0,0,0.1),0_10px_20px_-2px_rgba(0,0,0,0.06)] transition-all duration-300"
+        <div
+          className="mx-auto max-w-4xl"
+          role="region"
+          aria-roledescription="carousel"
+          aria-label={spanish ? 'Reseñas de Google' : 'Google reviews'}
+          onMouseEnter={() => setInteracting(true)}
+          onMouseLeave={() => setInteracting(false)}
+          onFocusCapture={() => setInteracting(true)}
+          onBlurCapture={(event) => {
+            if (!event.currentTarget.contains(event.relatedTarget)) setInteracting(false);
+          }}
+        >
+          <div className="flex min-h-[280px] flex-col justify-between rounded-2xl bg-white p-7 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] md:min-h-[260px] md:p-10">
+            <div
+              key={activeIndex}
+              className={reducedMotion ? '' : 'review-enter'}
+              role="group"
+              aria-roledescription="slide"
+              aria-label={`${activeIndex + 1} ${spanish ? 'de' : 'of'} ${reviews.length}`}
             >
-              <div className="w-[50px] lg:w-[60px] h-[50px] lg:h-[60px] rounded-full bg-[#023A65] overflow-hidden relative mb-4 lg:mb-6">
-                <Image
-                  src={testimonialImages[index]}
-                  alt={`${testimonial.author} profile`}
-                  fill
-                  style={{ objectFit: 'cover' }}
-                  sizes="(max-width: 768px) 50px, 60px"
-                />
+              <div className="mb-5 flex items-center gap-1 text-amber-500" aria-label={spanish ? '5 de 5 estrellas' : '5 out of 5 stars'}>
+                {Array.from({ length: 5 }, (_, index) => (
+                  <FaStar key={index} aria-hidden="true" />
+                ))}
               </div>
-
-              <h3 className="text-lg lg:text-2xl font-bold text-gray-900 mb-3 lg:mb-4">
-                {testimonial.title}
-              </h3>
-
-              <p className="text-sm lg:text-base text-gray-600 mb-4 lg:mb-6 italic">
-                &quot;{testimonial.description}&quot;
+              <blockquote lang="en" className="text-xl leading-relaxed text-gray-800 md:text-2xl">
+                “{review.text}”
+              </blockquote>
+              <p className="mt-6 font-semibold text-gray-900">— {review.author}</p>
+              <p className="mt-1 text-sm text-gray-500">
+                {spanish ? 'Reseña original en inglés en Google Maps' : 'Google Maps review'}
               </p>
-
-              <div className="mt-auto text-xs lg:text-sm">
-                <span className="font-medium text-gray-900">— {testimonial.author}</span>
-                <span className="text-gray-500">, {testimonial.location}</span>
-              </div>
             </div>
-          ))}
+          </div>
+
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-4 sm:justify-between">
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => setActiveIndex((index) => (index - 1 + reviews.length) % reviews.length)}
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 text-[#023A65] hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#023A65]"
+                aria-label={spanish ? 'Reseña anterior' : 'Previous review'}
+              >
+                <FaChevronLeft aria-hidden="true" />
+              </button>
+              <button
+                type="button"
+                onClick={() => setPaused((value) => !value)}
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 text-[#023A65] hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#023A65]"
+                aria-label={paused ? (spanish ? 'Reanudar reseñas' : 'Play reviews') : (spanish ? 'Pausar reseñas' : 'Pause reviews')}
+                aria-pressed={paused}
+              >
+                {paused ? <FaPlay aria-hidden="true" /> : <FaPause aria-hidden="true" />}
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveIndex((index) => (index + 1) % reviews.length)}
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 text-[#023A65] hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#023A65]"
+                aria-label={spanish ? 'Siguiente reseña' : 'Next review'}
+              >
+                <FaChevronRight aria-hidden="true" />
+              </button>
+              <span className="ml-2 text-sm text-gray-500" aria-live="off">
+                {activeIndex + 1} / {reviews.length}
+              </span>
+            </div>
+
+            <a
+              href={googleReviewsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-semibold text-[#023A65] underline underline-offset-4 hover:text-[#03528f] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#023A65]"
+            >
+              {spanish ? 'Ver reseñas en Google Maps ↗' : 'Read reviews on Google Maps ↗'}
+            </a>
+          </div>
         </div>
       </div>
     </section>
   );
-} 
+}

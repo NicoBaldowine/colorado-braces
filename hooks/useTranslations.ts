@@ -998,7 +998,7 @@ export const translations = {
         title: "¿Por Qué Elegir Colorado Braces?",
         cards: {
           expert: {
-            title: "Atención Ortodóntica Experto",
+            title: "Atención Ortodóntica Experta",
             description: "Más de 10 Años de Experiencia Ortodóntica Excepcional"
           },
           providers: {

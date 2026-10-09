@@ -250,16 +250,16 @@ export const translations = {
         },
         hours: {
           title: "Office Hours",
-          weekdays: {
-            days: "Monday - Thursday",
-            hours: "9:00 AM - 5:00 PM"
+          openWeekdays: {
+            days: "Monday, Tuesday, Thursday & Friday",
+            hours: "9:00 AM - 3:00 PM"
           },
-          friday: {
-            days: "Friday",
-            hours: "9:00 AM - 2:00 PM"
+          saturday: {
+            days: "Saturday",
+            hours: "9:00 AM - 12:00 PM"
           },
-          weekend: {
-            days: "Saturday - Sunday",
+          closedDays: {
+            days: "Wednesday & Sunday",
             hours: "Closed"
           }
         }
@@ -752,7 +752,7 @@ export const translations = {
         selectService: "Select a service",
         selectTime: "Select a time",
         timeMorning: "Morning (9AM - 12PM)",
-        timeAfternoon: "Afternoon (12PM - 5PM)",
+        timeAfternoon: "Afternoon (12PM - 3PM)",
         notSure: "Not sure yet",
         dateHint: "Please select a date starting from tomorrow"
       },
@@ -1041,16 +1041,16 @@ export const translations = {
         },
         hours: {
           title: "Horario de Atención",
-          weekdays: {
-            days: "Lunes - Jueves",
-            hours: "9:00 AM - 5:00 PM"
+          openWeekdays: {
+            days: "Lunes, martes, jueves y viernes",
+            hours: "9:00 AM - 3:00 PM"
           },
-          friday: {
-            days: "Viernes",
-            hours: "9:00 AM - 2:00 PM"
+          saturday: {
+            days: "Sábado",
+            hours: "9:00 AM - 12:00 PM"
           },
-          weekend: {
-            days: "Sábado - Domingo",
+          closedDays: {
+            days: "Miércoles y domingo",
             hours: "Cerrado"
           }
         }
@@ -1544,7 +1544,7 @@ export const translations = {
         selectService: "Selecciona un servicio",
         selectTime: "Selecciona un horario",
         timeMorning: "Mañana (9AM - 12PM)",
-        timeAfternoon: "Tarde (12PM - 5PM)",
+        timeAfternoon: "Tarde (12PM - 3PM)",
         notSure: "No estoy seguro aún",
         dateHint: "Por favor selecciona una fecha a partir de mañana"
       },

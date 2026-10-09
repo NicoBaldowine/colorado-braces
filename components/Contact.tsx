@@ -89,19 +89,13 @@ export default function Contact() {
                 <h4 className="text-lg lg:text-xl font-bold text-gray-900 mb-3 lg:mb-4">
                   {t('home.contact.hours.title')}
                 </h4>
-                <div className="space-y-2 text-gray-600 text-sm lg:text-base">
-                  <p className="flex justify-between">
-                    <span>{t('home.contact.hours.weekdays.days')}</span>
-                    <span>{t('home.contact.hours.weekdays.hours')}</span>
-                  </p>
-                  <p className="flex justify-between">
-                    <span>{t('home.contact.hours.friday.days')}</span>
-                    <span>{t('home.contact.hours.friday.hours')}</span>
-                  </p>
-                  <p className="flex justify-between">
-                    <span>{t('home.contact.hours.weekend.days')}</span>
-                    <span>{t('home.contact.hours.weekend.hours')}</span>
-                  </p>
+                <div className="space-y-3 text-gray-600 text-sm lg:text-base">
+                  {(['openWeekdays', 'saturday', 'closedDays'] as const).map((group) => (
+                    <p key={group} className="flex flex-wrap justify-between gap-x-4 gap-y-1">
+                      <span>{t(`home.contact.hours.${group}.days`)}</span>
+                      <span className="whitespace-nowrap">{t(`home.contact.hours.${group}.hours`)}</span>
+                    </p>
+                  ))}
                 </div>
               </div>
             </div>

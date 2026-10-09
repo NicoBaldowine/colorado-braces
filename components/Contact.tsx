@@ -6,7 +6,7 @@ export default function Contact() {
   const { t } = useTranslations();
 
   return (
-    <section id="contact" className="bg-gray-50 py-12 lg:py-24">
+    <section id="contact" className="bg-gray-50 py-12 lg:py-24 scroll-mt-20">
       <div className="max-w-[1350px] mx-auto px-4">
         <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-8 lg:mb-16">
           {t('home.contact.title')}
@@ -110,4 +110,4 @@ export default function Contact() {
       </div>
     </section>
   );
-} 
+}

@@ -7,7 +7,7 @@ export default function Doctor() {
   const { t } = useTranslations();
 
   return (
-    <section className="py-12 lg:py-24 bg-gray-50">
+    <section id="doctor" className="py-12 lg:py-24 bg-gray-50 scroll-mt-20">
       <div className="max-w-[1350px] mx-auto px-4">
         <div className="max-w-[800px] mx-auto text-center">
           {/* Image */}
@@ -72,4 +72,4 @@ export default function Doctor() {
       </div>
     </section>
   );
-} 
+}

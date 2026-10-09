@@ -8,19 +8,19 @@ import { useTranslations } from '@/hooks/useTranslations';
 // This is a curated snapshot, not a live Google feed.
 const reviews = [
   {
-    author: 'Nate Andorsky',
+    author: 'N. A.',
     text: "Top notch! Can't recommend enough, Dr. Garcia provided excellent care and has great bedside manner.",
   },
   {
-    author: 'Charlyn Moss',
+    author: 'C. M.',
     text: 'I had a great experience correcting my smile with Colorado Braces!',
   },
   {
-    author: 'Oceane Andreis',
+    author: 'O. A.',
     text: 'A really sweet and attentive team. I felt in good hands the whole way through!',
   },
   {
-    author: 'Kristen Johnson',
+    author: 'K. J.',
     text: 'Dr. Garcia and his staff are amazing! He is very caring and talented. I highly recommend Dr. Garcia for any orthodontic needs!',
   },
 ];

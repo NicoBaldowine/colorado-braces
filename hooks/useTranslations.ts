@@ -808,7 +808,7 @@ export const translations = {
     home: {
       hero: {
         title: "Transforma Tu Sonrisa con Colorado Braces",
-        description: "Experimenta un cuidado ortodóntico excepcional en Denver con nuestro equipo experto. Especializados en Invisalign y OrthoFX, nos dedicamos a crear sonrisas hermosas y saludables que duran toda la vida.",
+        description: "Experimenta un cuidado ortodóntico excepcional en Denver con nuestro equipo experto. Especializados en Invisalign, OrthoFX y Angel Aligners, nos dedicamos a crear sonrisas hermosas y saludables que duran toda la vida.",
         cta: "Agenda una Consulta Gratis"
       },
       benefits: {

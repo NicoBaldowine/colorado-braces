@@ -834,7 +834,7 @@ export const translations = {
         learnMore: "Más sobre {{service}}",
         clearAligners: {
           title: "Alineadores Transparentes",
-          description: "Endereza tus dientes de forma invisible con nuestros Alineadores Transparentes en Denver. Como proveedores de Invisalign y OrthoFX, ofrecemos alineadores de última generación que se adaptan a tu estilo de vida."
+          description: "Endereza tus dientes de forma invisible con nuestros Alineadores Transparentes en Denver. Como proveedores de Invisalign, OrthoFX y Angel Aligners, ofrecemos alineadores de última generación que se adaptan a tu estilo de vida."
         },
         clearBraces: {
           title: "Brackets Transparentes",

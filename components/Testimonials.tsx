@@ -1,6 +1,6 @@
 'use client';
 
-import { FaGoogle } from 'react-icons/fa';
+import { FaGoogle, FaStar } from 'react-icons/fa';
 import { useTranslations } from '@/hooks/useTranslations';
 
 const googleReviewsUrl =
@@ -20,6 +20,14 @@ export default function Testimonials() {
           <h2 id="google-reviews-title" className="text-3xl font-bold text-gray-900 lg:text-4xl">
             {spanish ? 'Nuestras Reseñas en Google' : 'See Our Google Reviews'}
           </h2>
+          <div className="mt-6 flex flex-col items-center justify-center gap-2 sm:flex-row sm:gap-4">
+            <span className="flex gap-1 text-2xl text-amber-500" aria-hidden="true">
+              {Array.from({ length: 5 }, (_, index) => <FaStar key={index} />)}
+            </span>
+            <span className="text-lg font-bold text-gray-900">
+              {spanish ? '5,0 de 5 en Google' : '5.0 out of 5 on Google'}
+            </span>
+          </div>
           <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-gray-600 md:text-lg">
             {spanish
               ? 'Lee las experiencias que otras personas han compartido en nuestro perfil de Google.'

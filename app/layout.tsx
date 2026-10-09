@@ -11,8 +11,28 @@ const figtree = Figtree({
 });
 
 export const metadata: Metadata = {
-  title: 'Colorado Braces',
-  description: 'Transform Your Smile with Colorado Braces',
+  metadataBase: new URL('https://colorado-braces.com'),
+  title: {
+    default: 'Colorado Braces | Denver Orthodontist',
+  },
+  description: 'Orthodontic care in Denver for clear aligners, Invisalign, OrthoFX, Angel Aligners, clear braces, and traditional braces.',
+  applicationName: 'Colorado Braces',
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    type: 'website',
+    siteName: 'Colorado Braces',
+    title: 'Colorado Braces | Denver Orthodontist',
+    description: 'Orthodontic care in Denver for clear aligners, Invisalign, OrthoFX, Angel Aligners, clear braces, and traditional braces.',
+    url: 'https://colorado-braces.com/en/',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Colorado Braces | Denver Orthodontist',
+    description: 'Orthodontic care in Denver for clear aligners, Invisalign, OrthoFX, Angel Aligners, clear braces, and traditional braces.',
+  },
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: '32x32' },

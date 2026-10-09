@@ -842,7 +842,7 @@ export const translations = {
         },
         conventionalBraces: {
           title: "Brackets Convencionales",
-          description: "Nuestros Brackets Convencionales en Denver proporcionan una forma confiable de enderezar los dientes. Confía en nosotros para el cuidado experto en brackets que los residentes de Denver eligen."
+          description: "Nuestros Brackets Convencionales en Denver te ayudan a alinear tu sonrisa. Confía en nosotros para el cuidado experto en brackets que los residentes de Denver eligen."
         },
         whitening: {
           title: "Blanqueamiento",

@@ -116,8 +116,8 @@ export default function ClearBraces() {
               <p className="text-xl text-gray-200 mb-8">
                 {t('services.clearBraces.cta.description')}
               </p>
-              <Link 
-                href={`/${lang}/appointment`}
+              <Link
+                href={`/${lang}/appointment/`}
                 className="inline-flex items-center justify-center px-8 py-4 bg-white text-[#023A65] font-semibold rounded-full hover:bg-gray-100 transition-colors"
               >
                 {t('services.clearBraces.cta.button')}
@@ -130,4 +130,4 @@ export default function ClearBraces() {
       <Contact />
     </main>
   );
-} 
+}

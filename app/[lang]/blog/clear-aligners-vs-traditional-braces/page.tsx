@@ -163,14 +163,14 @@ export default function BlogPost() {
 
           <div className="flex flex-col md:flex-row items-center gap-6 mt-12">
             <Link 
-              href={`/${lang}/appointment`}
+              href={`/${lang}/appointment/`}
               className="inline-block bg-[#023A65] text-white px-6 py-3 rounded-full hover:bg-[#034b82] transition-colors"
             >
               {currentContent.cta}
             </Link>
 
             <Link 
-              href={`/${lang}/blog`}
+              href={`/${lang}/blog/`}
               className="text-[#023A65] hover:text-[#034b82] transition-colors"
             >
               {currentContent.backToBlog}

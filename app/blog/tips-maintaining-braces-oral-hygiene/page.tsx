@@ -2,6 +2,15 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Contact from "@/components/Contact";
 import Link from "next/link";
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Braces Care and Oral Hygiene Tips | Colorado Braces',
+  description: 'Read practical tips for cleaning braces and maintaining oral hygiene during orthodontic treatment.',
+  alternates: {
+    canonical: 'https://colorado-braces.com/blog/tips-maintaining-braces-oral-hygiene/',
+  },
+};
 
 export default function BlogPost() {
   return (
@@ -79,8 +88,8 @@ export default function BlogPost() {
                   <p className="mb-4">
                     If you're having trouble maintaining your braces or need a refresher on proper cleaning techniques, our team is here to help. Schedule an appointment for personalized guidance.
                   </p>
-                  <Link 
-                    href="/contact"
+                  <Link
+                    href="/en/appointment/"
                     className="inline-block bg-[#023A65] text-white px-6 py-3 rounded-full hover:bg-[#034b82] transition-colors"
                   >
                     Book an Appointment
@@ -90,8 +99,8 @@ export default function BlogPost() {
 
               {/* Back to Blog */}
               <div className="mt-12 pt-12 border-t">
-                <Link 
-                  href="/blog"
+                <Link
+                  href="/en/blog/"
                   className="text-[#023A65] hover:text-[#034b82] transition-colors"
                 >
                   ← Back to Blog
@@ -106,4 +115,4 @@ export default function BlogPost() {
       <Footer />
     </div>
   );
-} 
+}

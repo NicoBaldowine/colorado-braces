@@ -2,6 +2,15 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Contact from "@/components/Contact";
 import Link from "next/link";
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Early Orthodontic Treatment for Children | Colorado Braces',
+  description: 'Learn about early orthodontic treatment for children and when to schedule an orthodontic consultation.',
+  alternates: {
+    canonical: 'https://colorado-braces.com/blog/benefits-early-orthodontic-treatment/',
+  },
+};
 
 export default function BlogPost() {
   return (
@@ -72,8 +81,8 @@ export default function BlogPost() {
                   <p className="mb-4">
                     If you're considering early orthodontic treatment for your child, we invite you to schedule a consultation with our experienced team at Colorado Braces.
                   </p>
-                  <Link 
-                    href="/contact"
+                  <Link
+                    href="/en/appointment/"
                     className="inline-block bg-[#023A65] text-white px-6 py-3 rounded-full hover:bg-[#034b82] transition-colors"
                   >
                     Book Your Consultation
@@ -83,8 +92,8 @@ export default function BlogPost() {
 
               {/* Back to Blog */}
               <div className="mt-12 pt-12 border-t">
-                <Link 
-                  href="/blog"
+                <Link
+                  href="/en/blog/"
                   className="text-[#023A65] hover:text-[#034b82] transition-colors"
                 >
                   ← Back to Blog
@@ -99,4 +108,4 @@ export default function BlogPost() {
       <Footer />
     </div>
   );
-} 
+}

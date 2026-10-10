@@ -63,7 +63,7 @@ export default function Blog() {
             {t('home.blog.title')}
           </h2>
           <Link
-            href={`/${lang}/blog`}
+            href={`/${lang}/blog/`}
             className="inline-flex items-center justify-center px-4 lg:px-6 py-2 lg:py-3 bg-[#034b82] text-white text-sm lg:text-base font-semibold rounded-full hover:bg-[#045694] transition-colors"
           >
             {t('home.blog.seeAll')}
@@ -73,8 +73,8 @@ export default function Blog() {
 
         <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
           {currentPosts.map((post, index) => (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className="bg-[#034b82] rounded-2xl overflow-hidden hover:bg-[#045694] transition-all duration-300 flex flex-col"
             >
               <div className="w-full h-[150px] lg:h-[200px] relative">
@@ -86,7 +86,7 @@ export default function Blog() {
                   sizes="(max-width: 768px) 100vw, 33vw"
                 />
               </div>
-              
+
               <div className="p-6 lg:p-8 flex flex-col flex-grow">
                 <h3 className="text-lg lg:text-xl font-bold text-white mb-3 lg:mb-4 line-clamp-2">
                   {post.title}
@@ -96,7 +96,7 @@ export default function Blog() {
                 </p>
                 <div className="mt-auto">
                   <Link
-                    href={`/${lang}/blog/${post.slug}`}
+                    href={`/${lang}/blog/${post.slug}/`}
                     className="inline-flex items-center justify-center px-4 lg:px-6 py-2 lg:py-3 bg-[#045694] text-white text-sm lg:text-base font-semibold rounded-full hover:bg-[#056ab4] transition-colors"
                   >
                     {t('home.blog.readMore')}
@@ -110,4 +110,4 @@ export default function Blog() {
       </div>
     </section>
   );
-} 
+}

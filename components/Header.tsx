@@ -11,6 +11,7 @@ import Image from 'next/image';
 
 export default function Header() {
   const pathname = usePathname();
+  const activePath = pathname?.replace(/\/$/, '') || '/';
   const { t, lang } = useTranslations();
   const [selectedLanguage, setSelectedLanguage] = useState('English');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -32,14 +33,20 @@ export default function Header() {
     { name: t('common.services.whitening'), path: "/services/whitening" }
   ];
 
+  const pathForLanguage = (code: string) => {
+    const currentPath = pathname || `/${lang}/`;
+    const localizedPath = currentPath.replace(/^\/(en|es)(?=\/|$)/, `/${code}`);
+    return localizedPath === currentPath ? `/${code}/` : localizedPath;
+  };
+
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-gray-200">
       <div className="max-w-[1350px] mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link href={`/${lang}`}>
-              <Image 
+            <Link href={`/${lang}/`}>
+              <Image
                 src={Logo.src}
                 alt="Colorado Braces"
                 width={145}
@@ -53,29 +60,29 @@ export default function Header() {
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-4">
             <nav className="flex items-center gap-6">
-              <Link 
-                href={`/${lang}`}
+              <Link
+                href={`/${lang}/`}
                 className={`text-gray-700 font-medium hover:text-[#023A65] hover:bg-gray-50 px-3 py-2 rounded-md transition-colors ${
-                  pathname === `/${lang}` ? "text-[#023A65] bg-gray-50" : ""
+                  activePath === `/${lang}` ? "text-[#023A65] bg-gray-50" : ""
                 }`}
               >
                 {t('common.navigation.home')}
               </Link>
 
-              <Link 
-                href={`/${lang}/about`}
+              <Link
+                href={`/${lang}/about/`}
                 className={`text-gray-700 font-medium hover:text-[#023A65] hover:bg-gray-50 px-2 py-2 rounded-md transition-colors ${
-                  pathname === `/${lang}/about` ? "text-[#023A65] bg-gray-50" : ""
+                  activePath === `/${lang}/about` ? "text-[#023A65] bg-gray-50" : ""
                 }`}
               >
                 {t('common.navigation.about')}
               </Link>
-              
+
               {/* Services Dropdown */}
               <div className="relative group">
-                <button 
+                <button
                   className={`flex items-center gap-2 text-gray-700 font-medium hover:text-[#023A65] hover:bg-gray-50 px-2 py-2 rounded-md transition-colors ${
-                    pathname.includes("/services") ? "text-[#023A65] bg-gray-50" : ""
+                    activePath.includes("/services") ? "text-[#023A65] bg-gray-50" : ""
                   }`}
                 >
                   {t('common.navigation.services')}
@@ -88,9 +95,9 @@ export default function Header() {
                     ) : (
                       <Link
                         key={service.path}
-                        href={`/${lang}${service.path}`}
+                        href={`/${lang}${service.path}/`}
                         className={`block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#023A65] transition-colors ${
-                          pathname.includes(service.path) ? "text-[#023A65] bg-gray-50" : ""
+                          activePath.includes(service.path) ? "text-[#023A65] bg-gray-50" : ""
                         }`}
                       >
                         {service.name}
@@ -100,26 +107,21 @@ export default function Header() {
                 </div>
               </div>
 
-              <Link 
-                href={`/${lang}/blog`}
+              <Link
+                href={`/${lang}/blog/`}
                 className={`text-gray-700 font-medium hover:text-[#023A65] hover:bg-gray-50 px-2 py-2 rounded-md transition-colors ${
-                  pathname.includes("/blog") ? "text-[#023A65] bg-gray-50" : ""
+                  activePath.includes("/blog") ? "text-[#023A65] bg-gray-50" : ""
                 }`}
               >
                 {t('common.navigation.blog')}
               </Link>
 
-              <button
-                onClick={() => {
-                  const contactSection = document.getElementById('contact');
-                  if (contactSection) {
-                    contactSection.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
+              <Link
+                href={pathname?.includes('/privacy') ? `/${lang}/#contact` : '#contact'}
                 className="text-gray-700 font-medium hover:text-[#023A65] hover:bg-gray-50 px-2 py-2 rounded-md transition-colors cursor-pointer"
               >
                 {t('common.navigation.contact')}
-              </button>
+              </Link>
             </nav>
 
             {/* Desktop Right Section */}
@@ -133,18 +135,18 @@ export default function Header() {
                   <span>{lang === 'es' ? 'Español' : 'English'}</span>
                   <FaChevronDown className={`w-3 h-3 transform transition-transform ${isLangOpen ? 'rotate-180' : ''}`} />
                 </button>
-              
+
                 {isLangOpen && (
                   <div className="absolute top-full mt-1 bg-white shadow-lg rounded-md py-2 w-32">
-                    <Link 
-                      href="/" 
+                    <Link
+                      href={pathForLanguage('en')}
                       className="block px-4 py-2 hover:bg-gray-100"
                       onClick={() => setIsLangOpen(false)}
                     >
                       English
                     </Link>
-                    <Link 
-                      href="/es" 
+                    <Link
+                      href={pathForLanguage('es')}
                       className="block px-4 py-2 hover:bg-gray-100"
                       onClick={() => setIsLangOpen(false)}
                     >
@@ -155,8 +157,8 @@ export default function Header() {
               </div>
 
               {/* Phone Number with Icon */}
-              <a 
-                href="tel:3039914455" 
+              <a
+                href="tel:3039914455"
                 className="flex items-center space-x-2 text-gray-600 hover:text-primary"
               >
                 <FaPhone className="w-4 h-4" />
@@ -165,7 +167,7 @@ export default function Header() {
 
               {/* Appointment Button */}
               <Link
-                href={`/${lang}/appointment`}
+                href={`/${lang}/appointment/`}
                 className="px-6 py-2 bg-primary text-white rounded-full hover:bg-primary-dark transition-colors whitespace-nowrap"
               >
                 {lang === 'es' ? 'Agendar Cita' : 'Make an Appointment'}
@@ -175,8 +177,8 @@ export default function Header() {
 
           {/* Mobile Right Section */}
           <div className="flex md:hidden ml-auto items-center space-x-4">
-            <a 
-              href="tel:3039914455" 
+            <a
+              href="tel:3039914455"
               className="p-2 text-primary"
               aria-label="Call us"
             >
@@ -184,7 +186,7 @@ export default function Header() {
             </a>
 
             <Link
-              href={`/${lang}/appointment`}
+              href={`/${lang}/appointment/`}
               className="px-4 py-2 bg-primary text-white rounded-full hover:bg-primary-dark transition-colors text-sm whitespace-nowrap"
             >
               {lang === 'es' ? 'Agenda Ya' : 'Book Now'}
@@ -208,25 +210,25 @@ export default function Header() {
         {isMenuOpen && (
           <div className="lg:hidden bg-white border-t border-gray-200">
             <nav className="flex flex-col py-4">
-              <Link 
-                href={`/${lang}`}
+              <Link
+                href={`/${lang}/`}
                 className={`px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#023A65] ${
-                  pathname === `/${lang}` ? "text-[#023A65] bg-gray-50" : ""
+                  activePath === `/${lang}` ? "text-[#023A65] bg-gray-50" : ""
                 }`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 {t('common.navigation.home')}
               </Link>
-              <Link 
-                href={`/${lang}/about`}
+              <Link
+                href={`/${lang}/about/`}
                 className={`px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#023A65] ${
-                  pathname === `/${lang}/about` ? "text-[#023A65] bg-gray-50" : ""
+                  activePath === `/${lang}/about` ? "text-[#023A65] bg-gray-50" : ""
                 }`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 {t('common.navigation.about')}
               </Link>
-              
+
               {/* Services Links */}
               {services.map((service, index) => (
                 service.type === 'divider' ? (
@@ -234,9 +236,9 @@ export default function Header() {
                 ) : (
                   <Link
                     key={service.path}
-                    href={`/${lang}${service.path}`}
+                    href={`/${lang}${service.path}/`}
                     className={`px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#023A65] ${
-                      pathname === `/${lang}${service.path}` ? "text-[#023A65] bg-gray-50" : ""
+                      activePath === `/${lang}${service.path}` ? "text-[#023A65] bg-gray-50" : ""
                     }`}
                     onClick={() => setIsMenuOpen(false)}
                   >
@@ -245,10 +247,10 @@ export default function Header() {
                 )
               ))}
 
-              <Link 
-                href={`/${lang}/blog`}
+              <Link
+                href={`/${lang}/blog/`}
                 className={`px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#023A65] ${
-                  pathname.includes("/blog") ? "text-[#023A65] bg-gray-50" : ""
+                  activePath.includes("/blog") ? "text-[#023A65] bg-gray-50" : ""
                 }`}
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -261,10 +263,7 @@ export default function Header() {
                   <button
                     key={lang.code}
                     onClick={() => {
-                      const currentPath = pathname || '/';
-                      const pathWithoutLang = currentPath.replace(/^\/[a-z]{2}/, '');
-                      const newPath = `/${lang.code}${pathWithoutLang}`;
-                      window.location.href = newPath;
+                      window.location.href = pathForLanguage(lang.code);
                       setIsMenuOpen(false);
                     }}
                     className="block w-full text-left px-2 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#023A65]"
@@ -279,4 +278,4 @@ export default function Header() {
       </div>
     </header>
   );
-} 
+}

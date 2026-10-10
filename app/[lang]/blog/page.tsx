@@ -78,7 +78,7 @@ export default function Blog() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {currentPosts.map((post, index) => (
               <Link 
-                href={`/${lang}/blog/${post.slug}`}
+                href={`/${lang}/blog/${post.slug}/`}
                 key={index}
                 className="bg-[#034b82] rounded-2xl overflow-hidden hover:bg-[#045694] transition-all duration-300 flex flex-col"
               >

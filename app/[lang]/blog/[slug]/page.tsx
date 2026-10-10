@@ -1,21 +1,11 @@
-import { useTranslations } from '@/hooks/useTranslations';
-import Contact from "@/components/Contact";
-import BlogClient from './BlogClient';
+import { notFound } from 'next/navigation';
 
-// This is now a Server Component
+export const dynamicParams = false;
+
 export function generateStaticParams() {
-  return [
-    { lang: 'en', slug: 'can-clear-aligners-fix-bite' },
-    { lang: 'en', slug: 'clear-aligners-vs-traditional-braces' },
-    { lang: 'en', slug: 'how-do-braces-work' }
-  ];
+  return [];
 }
 
-export default function BlogPost({ params }: { params: { lang: string; slug: string } }) {
-  return (
-    <main>
-      <BlogClient params={params} />
-      <Contact />
-    </main>
-  );
-} 
+export default function BlogPost() {
+  notFound();
+}

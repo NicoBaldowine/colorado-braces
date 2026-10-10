@@ -73,7 +73,7 @@ export default function Services() {
                   {service.description}
                 </p>
                 <Link
-                  href={`/${lang}/services/${service.slug}`}
+                  href={`/${lang}/services/${service.slug}/`}
                   className="mt-auto text-[#023A65] text-sm lg:text-base font-semibold hover:text-[#034b82] transition-colors"
                 >
                   See more →

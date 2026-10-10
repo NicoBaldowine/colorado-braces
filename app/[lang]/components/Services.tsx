@@ -23,7 +23,7 @@ export default function Services({ lang, translations }: ServicesProps) {
 
         <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
           {translations.services.map((service) => (
-            <div 
+            <div
               key={service.slug}
               className="flex flex-col lg:flex-row p-4 lg:p-6 rounded-2xl bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] hover:shadow-[0_2px_15px_-3px_rgba(0,0,0,0.1),0_10px_20px_-2px_rgba(0,0,0,0.06)] transition-all duration-300 h-full"
             >
@@ -39,7 +39,7 @@ export default function Services({ lang, translations }: ServicesProps) {
                   {service.description}
                 </p>
                 <a
-                  href={`/${lang}/services/${service.slug}`}
+                  href={`/${lang}/services/${service.slug}/`}
                   className="mt-auto text-[#023A65] text-sm lg:text-base font-semibold hover:text-[#034b82] transition-colors"
                 >
                   {translations.learnMore.replace('{{service}}', service.title)} →
@@ -51,4 +51,4 @@ export default function Services({ lang, translations }: ServicesProps) {
       </div>
     </section>
   );
-} 
+}

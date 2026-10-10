@@ -14,16 +14,28 @@ const localizedPaths = [
   'services/clear-braces',
   'services/conventional-braces',
   'services/whitening',
-  'services/invisalign',
-  'services/orthofx',
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return ['en', 'es'].flatMap((lang) =>
+  const localizedUrls = ['en', 'es'].flatMap((lang) =>
     localizedPaths.map((path) => ({
       url: path ? `${siteUrl}/${lang}/${path}/` : `${siteUrl}/${lang}/`,
       changeFrequency: path.startsWith('blog/') ? 'monthly' as const : 'weekly' as const,
       priority: path === '' ? 1 : path.startsWith('services/') ? 0.8 : 0.6,
     })),
   );
+
+  return [
+    ...localizedUrls,
+    {
+      url: `${siteUrl}/blog/benefits-early-orthodontic-treatment/`,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
+      url: `${siteUrl}/blog/tips-maintaining-braces-oral-hygiene/`,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+  ];
 }

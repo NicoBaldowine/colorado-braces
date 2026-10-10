@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { redirect } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { localizedMetadata, seoCopy } from '@/lib/seo';
@@ -29,7 +29,7 @@ export default function LangLayout({
   params: { lang: string };
 }) {
   if (!validLocales.includes(lang)) {
-    redirect('/en');
+    notFound();
   }
 
   return (

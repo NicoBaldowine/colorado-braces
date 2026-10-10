@@ -48,7 +48,7 @@ export default function ServiceCard({
           {description}
         </p>
         <Link
-          href={`/${lang}/services/${slug}`}
+          href={`/${lang}/services/${slug}/`}
           className="mt-auto text-[#023A65] text-sm lg:text-base font-semibold hover:text-[#034b82] transition-colors"
         >
           {learnMoreText} →
@@ -56,4 +56,4 @@ export default function ServiceCard({
       </div>
     </div>
   );
-} 
+}

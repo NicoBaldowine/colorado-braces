@@ -151,8 +151,8 @@ export default function ClearAligners() {
               <p className="text-xl text-gray-200 mb-8">
                 {t('services.clearAligners.cta.description')}
               </p>
-              <Link 
-                href={`/${lang}/appointment`}
+              <Link
+                href={`/${lang}/appointment/`}
                 className="inline-flex items-center justify-center px-8 py-4 bg-white text-[#023A65] font-semibold rounded-full hover:bg-gray-100 transition-colors"
               >
                 {t('services.clearAligners.cta.button')}
@@ -165,4 +165,4 @@ export default function ClearAligners() {
       <Contact />
     </main>
   );
-} 
+}

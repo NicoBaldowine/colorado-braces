@@ -34,27 +34,27 @@ export default function Footer() {
             <h3 className="font-bold text-gray-900 mb-4">{t('footer.columns.ourSite.title')}</h3>
             <ul className="space-y-3">
               <li>
-                <Link href={`/${lang}`} className="text-gray-600 hover:text-[#023A65] transition-colors">
+                <Link href={`/${lang}/`} className="text-gray-600 hover:text-[#023A65] transition-colors">
                   {t('footer.columns.ourSite.links.home')}
                 </Link>
               </li>
               <li>
-                <Link href={`/${lang}/about`} className="text-gray-600 hover:text-[#023A65] transition-colors">
+                <Link href={`/${lang}/about/`} className="text-gray-600 hover:text-[#023A65] transition-colors">
                   {t('footer.columns.ourSite.links.about')}
                 </Link>
               </li>
               <li>
-                <Link href={`/${lang}/blog`} className="text-gray-600 hover:text-[#023A65] transition-colors">
+                <Link href={`/${lang}/blog/`} className="text-gray-600 hover:text-[#023A65] transition-colors">
                   {t('footer.columns.ourSite.links.blog')}
                 </Link>
               </li>
               <li>
-                <Link href={`/${lang}/contact`} className="text-gray-600 hover:text-[#023A65] transition-colors">
+                <Link href={`/${lang}/#contact`} className="text-gray-600 hover:text-[#023A65] transition-colors">
                   {t('footer.columns.ourSite.links.contact')}
                 </Link>
               </li>
               <li>
-                <Link href={`/${lang}/privacy`} className="text-gray-600 hover:text-[#023A65] transition-colors">
+                <Link href={`/${lang}/privacy/`} className="text-gray-600 hover:text-[#023A65] transition-colors">
                   {t('footer.columns.ourSite.links.privacy')}
                 </Link>
               </li>
@@ -66,22 +66,22 @@ export default function Footer() {
             <h3 className="font-bold text-gray-900 mb-4">{t('footer.columns.services.title')}</h3>
             <ul className="space-y-3">
               <li>
-                <Link href={`/${lang}/services/clear-aligners`} className="text-gray-600 hover:text-[#023A65] transition-colors">
+                <Link href={`/${lang}/services/clear-aligners/`} className="text-gray-600 hover:text-[#023A65] transition-colors">
                   {t('footer.columns.services.links.clearAligners')}
                 </Link>
               </li>
               <li>
-                <Link href={`/${lang}/services/clear-braces`} className="text-gray-600 hover:text-[#023A65] transition-colors">
+                <Link href={`/${lang}/services/clear-braces/`} className="text-gray-600 hover:text-[#023A65] transition-colors">
                   {t('footer.columns.services.links.clearBraces')}
                 </Link>
               </li>
               <li>
-                <Link href={`/${lang}/services/conventional-braces`} className="text-gray-600 hover:text-[#023A65] transition-colors">
+                <Link href={`/${lang}/services/conventional-braces/`} className="text-gray-600 hover:text-[#023A65] transition-colors">
                   {t('footer.columns.services.links.conventionalBraces')}
                 </Link>
               </li>
               <li>
-                <Link href={`/${lang}/services/whitening`} className="text-gray-600 hover:text-[#023A65] transition-colors">
+                <Link href={`/${lang}/services/whitening/`} className="text-gray-600 hover:text-[#023A65] transition-colors">
                   {t('footer.columns.services.links.whitening')}
                 </Link>
               </li>
@@ -94,8 +94,8 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-center gap-2">
                 <FaInstagram className="w-5 h-5 text-[#023A65]" />
-                <a 
-                  href="https://www.instagram.com/coloradobraces/" 
+                <a
+                  href="https://www.instagram.com/coloradobraces/"
                   className="text-gray-600 hover:text-[#023A65] transition-colors"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -105,8 +105,8 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <FaFacebook className="w-5 h-5 text-[#023A65]" />
-                <a 
-                  href="https://www.facebook.com/coloradobraces/" 
+                <a
+                  href="https://www.facebook.com/coloradobraces/"
                   className="text-gray-600 hover:text-[#023A65] transition-colors"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -125,4 +125,4 @@ export default function Footer() {
       </div>
     </footer>
   );
-} 
+}

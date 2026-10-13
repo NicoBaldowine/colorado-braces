@@ -5,13 +5,19 @@ import Image from 'next/image';
 import Link from 'next/link';
 import blogpost1 from '@/app/assets/blogpost1.jpg';
 import blogpost2 from '@/app/assets/blogpost2.jpg';
-import blogpost3 from '@/app/assets/blogpost3.jpg';
+import crowdingImage from '@/app/assets/lower-anterior-crowding-photo.png';
 
 export default function Blog() {
   const { t, lang } = useTranslations();
 
   const blogPosts = {
     en: [
+      {
+        title: "Why Crowded Teeth Matter Beyond Appearance",
+        description: "Crowded teeth can be harder to clean. Learn how gum disease can affect the bone supporting your teeth and what orthodontic care can—and cannot—do.",
+        slug: "why-crowded-teeth-matter",
+        image: crowdingImage
+      },
       {
         title: "Invisible Braces vs. Traditional Braces: Which is Better for Your Lifestyle?",
         description: "Compare the advantages of invisible braces with conventional braces. Learn about aesthetics, comfort, maintenance, and how each option fits into your lifestyle.",
@@ -23,15 +29,15 @@ export default function Blog() {
         description: "Discover whether clear aligners can fix bite issues caused by malocclusion. Learn about the effectiveness of clear aligners in treating various bite problems.",
         slug: "can-clear-aligners-fix-bite",
         image: blogpost2
-      },
-      {
-        title: "How Do Braces Work? A Simple Guide to Fixing Crooked Teeth and Misaligned Bites",
-        description: "Learn how braces straighten crooked teeth and fix misaligned bites in this simple guide. Understand the orthodontic process and how we can help you achieve a healthy smile.",
-        slug: "how-do-braces-work",
-        image: blogpost3
       }
     ],
     es: [
+      {
+        title: "Por qué el apiñamiento dental importa más allá de la estética",
+        description: "Los dientes apiñados pueden ser más difíciles de limpiar. Conoce la relación entre la enfermedad periodontal y la pérdida de hueso, y los límites de la ortodoncia.",
+        slug: "why-crowded-teeth-matter",
+        image: crowdingImage
+      },
       {
         title: "Brackets Invisibles vs. Brackets Tradicionales: ¿Cuál es Mejor para tu Estilo de Vida?",
         description: "Compara las ventajas de los brackets invisibles con los convencionales. Aprende sobre estética, comodidad, mantenimiento y cómo cada opción se adapta a tu estilo de vida.",
@@ -43,12 +49,6 @@ export default function Blog() {
         description: "Descubre si los alineadores transparentes pueden corregir problemas de mordida causados por la maloclusión. Aprende sobre su efectividad en diversos problemas de mordida.",
         slug: "can-clear-aligners-fix-bite",
         image: blogpost2
-      },
-      {
-        title: "¿Cómo Funcionan los Brackets? Una Guía Simple para Corregir Dientes Torcidos",
-        description: "Aprende cómo los brackets enderezan los dientes torcidos y corrigen problemas de mordida en esta guía simple. Entiende el proceso ortodóntico y cómo podemos ayudarte.",
-        slug: "how-do-braces-work",
-        image: blogpost3
       }
     ]
   };
@@ -82,7 +82,7 @@ export default function Blog() {
                   src={post.image}
                   alt={post.title}
                   fill
-                  className="object-cover"
+                  className={`object-cover ${post.slug === 'why-crowded-teeth-matter' ? 'object-bottom' : 'object-center'}`}
                   sizes="(max-width: 768px) 100vw, 33vw"
                 />
               </div>

@@ -7,12 +7,19 @@ import { FaArrowRight } from 'react-icons/fa';
 import blogpost1 from '@/app/assets/blogpost1.jpg';
 import blogpost2 from '@/app/assets/blogpost2.jpg';
 import blogpost3 from '@/app/assets/blogpost3.jpg';
+import crowdingImage from '@/app/assets/lower-anterior-crowding-photo.png';
 
 export default function Blog() {
   const { t, lang } = useTranslations();
 
   const blogPosts = {
     en: [
+      {
+        title: "Why Crowded Teeth Matter Beyond Appearance",
+        description: "Crowded teeth can be harder to clean. Learn how gum disease can affect the bone supporting your teeth and what orthodontic care can—and cannot—do.",
+        slug: "why-crowded-teeth-matter",
+        image: crowdingImage
+      },
       {
         title: "Invisible Braces vs. Traditional Braces: Which is Better for Your Lifestyle?",
         description: "Compare the advantages of invisible braces with conventional braces. Learn about aesthetics, comfort, maintenance, and how each option fits into your lifestyle.",
@@ -33,6 +40,12 @@ export default function Blog() {
       }
     ],
     es: [
+      {
+        title: "Por qué el apiñamiento dental importa más allá de la estética",
+        description: "Los dientes apiñados pueden ser más difíciles de limpiar. Conoce la relación entre la enfermedad periodontal y la pérdida de hueso, y los límites de la ortodoncia.",
+        slug: "why-crowded-teeth-matter",
+        image: crowdingImage
+      },
       {
         title: "Brackets Invisibles vs. Brackets Tradicionales: ¿Cuál es Mejor para tu Estilo de Vida?",
         description: "Compara las ventajas de los brackets invisibles con los convencionales. Aprende sobre estética, comodidad, mantenimiento y cómo cada opción se adapta a tu estilo de vida.",
@@ -87,7 +100,7 @@ export default function Blog() {
                     src={post.image}
                     alt={post.title}
                     fill
-                    className="object-cover"
+                    className={`object-cover ${post.slug === 'why-crowded-teeth-matter' ? 'object-bottom' : 'object-center'}`}
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
                 </div>

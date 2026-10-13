@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import SiteChrome from '@/components/SiteChrome';
 import { localizedMetadata, seoCopy } from '@/lib/seo';
 
 export function generateStaticParams() {
@@ -33,10 +32,6 @@ export default function LangLayout({
   }
 
   return (
-    <>
-      <Header />
-      {children}
-      <Footer />
-    </>
+    <SiteChrome>{children}</SiteChrome>
   );
 }

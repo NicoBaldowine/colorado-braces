@@ -36,8 +36,8 @@ export async function POST(request: Request) {
         <p><strong>Email:</strong> ${escapeHtml(body.email)}</p>
         <p><strong>Phone:</strong> ${escapeHtml(body.phone)}</p>
         <p><strong>Service:</strong> ${escapeHtml(body.service)}</p>
-        <p><strong>Preferred Date:</strong> ${escapeHtml(body.preferredDate)}</p>
-        <p><strong>Preferred Time:</strong> ${escapeHtml(body.preferredTime)}</p>
+        ${body.preferredDate ? `<p><strong>Preferred Date:</strong> ${escapeHtml(body.preferredDate)}</p>` : ''}
+        ${body.preferredTime ? `<p><strong>Preferred Time:</strong> ${escapeHtml(body.preferredTime)}</p>` : ''}
       `
     };
 

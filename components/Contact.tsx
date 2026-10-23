@@ -16,7 +16,8 @@ export default function Contact() {
           {/* Map - Takes up 2/3 of the space on desktop, full width on mobile */}
           <div className="md:col-span-2 h-[300px] lg:h-[600px] bg-gray-100 rounded-lg overflow-hidden shadow-lg">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3069.4261030046897!2d-104.94073!3d39.703456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876c7e785c19861f%3A0x9f891d001ae1d082!2s3955%20E%20Exposition%20Ave%20%23310%2C%20Denver%2C%20CO%2080209!5e0!3m2!1sen!2sus!4v1709群組1!5m2!1sen!2sus"
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3069.543487802227!2d-104.9417544!3d39.7049671!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa27f039dea1dd551%3A0x9f1a56be30a348f0!2sColorado%20Braces!5e0!3m2!1sen!2sus!4v1792785856064!5m2!1sen!2sus"
+              title="Colorado Braces on Google Maps"
               width="100%"
               height="100%"
               style={{ border: 0 }}

@@ -15,6 +15,12 @@ export default function Blog() {
   const blogPosts = {
     en: [
       {
+        title: "Why Age 7 Is the Right Time for a First Orthodontic Visit",
+        description: "Age 7 is the right milestone for a first orthodontic checkup. Learn what the AAO, ADA, and clinical studies say about timing.",
+        slug: "first-orthodontic-visit-age-7",
+        image: "/age-seven-orthodontic-visit.jpg"
+      },
+      {
         title: "Why Crowded Teeth Matter Beyond Appearance",
         description: "Crowded teeth can be harder to clean. Learn how gum disease can affect the bone supporting your teeth and what orthodontic care can—and cannot—do.",
         slug: "why-crowded-teeth-matter",
@@ -40,6 +46,12 @@ export default function Blog() {
       }
     ],
     es: [
+      {
+        title: "Por qué los 7 años son la edad adecuada para la primera visita al ortodoncista",
+        description: "Los 7 años son un momento adecuado para la primera evaluación de ortodoncia. Conoce las recomendaciones de la AAO y la ADA, y la evidencia clínica.",
+        slug: "first-orthodontic-visit-age-7",
+        image: "/age-seven-orthodontic-visit.jpg"
+      },
       {
         title: "Por qué el apiñamiento dental importa más allá de la estética",
         description: "Los dientes apiñados pueden ser más difíciles de limpiar. Conoce la relación entre la enfermedad periodontal y la pérdida de hueso, y los límites de la ortodoncia.",

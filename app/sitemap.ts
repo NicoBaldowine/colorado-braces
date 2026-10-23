@@ -6,6 +6,7 @@ const localizedPaths = [
   'about',
   'appointment',
   'blog',
+  'blog/first-orthodontic-visit-age-7',
   'blog/why-crowded-teeth-matter',
   'blog/clear-aligners-vs-traditional-braces',
   'blog/can-clear-aligners-fix-bite',

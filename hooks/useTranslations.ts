@@ -378,8 +378,8 @@ export const translations = {
           title: "Professional Experience:",
           items: [
             "Over 15 years of practicing dentistry with a narrow scope of practice in Orthodontics and Dentofacial Orthopedics",
-            "Lectured and shared expertise in several countries",
-            "Dedicated to extending his services to the Denver Metro community"
+            "Has shared his clinical experience through lectures in several countries",
+            "Provides personalized orthodontic care to patients throughout the Denver metro area"
           ]
         },
         personal: {
@@ -1169,8 +1169,8 @@ export const translations = {
           title: "Experiencia Profesional:",
           items: [
             "Más de 15 años de práctica odontológica con un ámbito de ejercicio limitado a la ortodoncia y la ortopedia dentofacial",
-            "Ha dado conferencias y compartido su experiencia en varios países",
-            "Dedicado a extender sus servicios a la comunidad del área metropolitana de Denver"
+            "Ha compartido su experiencia clínica mediante conferencias en varios países",
+            "Brinda atención ortodóntica personalizada a pacientes de toda el área metropolitana de Denver"
           ]
         },
         personal: {

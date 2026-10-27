@@ -369,15 +369,15 @@ export const translations = {
         education: {
           title: "Educational Background:",
           items: [
-            "Dental Degree: Universidad Santa Maria, Venezuela",
-            "Orthodontic Residency: Universidad de Carabobo, Venezuela",
+            "Dental Degree: Universidad Santa Maria, Venezuela, 2006",
+            "Orthodontic Residency: Universidad de Carabobo, Venezuela, 2010",
             "International Student Program: University of Colorado, 2022"
           ]
         },
         experience: {
           title: "Professional Experience:",
           items: [
-            "Over 15 years of practicing dentistry",
+            "20 years of practicing dentistry with a narrow scope of practice in Orthodontics and Dentofacial Orthopedics",
             "Lectured and shared expertise in several countries",
             "Dedicated to extending his services to the Denver Metro community"
           ]
@@ -1160,15 +1160,15 @@ export const translations = {
         education: {
           title: "Formación Académica:",
           items: [
-            "Título de Odontología: Universidad Santa María, Venezuela",
-            "Residencia en Ortodoncia: Universidad de Carabobo, Venezuela",
+            "Título de Odontología: Universidad Santa María, Venezuela, 2006",
+            "Residencia en Ortodoncia: Universidad de Carabobo, Venezuela, 2010",
             "Programa de Estudiantes Internacionales: Universidad de Colorado, 2022"
           ]
         },
         experience: {
           title: "Experiencia Profesional:",
           items: [
-            "Más de 15 años practicando odontología",
+            "20 años de práctica odontológica con un ámbito de ejercicio limitado a la ortodoncia y la ortopedia dentofacial",
             "Ha dado conferencias y compartido su experiencia en varios países",
             "Dedicado a extender sus servicios a la comunidad del área metropolitana de Denver"
           ]

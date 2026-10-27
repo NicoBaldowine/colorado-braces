@@ -69,7 +69,7 @@ export const seoCopy = {
   },
   about: {
     en: {
-      title: 'About Colorado Braces | Orthodontist in Denver',
+      title: 'About Colorado Braces | Orthodontic Provider in Denver',
       description: 'Meet Dr. Eduardo Garcia and learn about Colorado Braces, our orthodontic approach, and our Denver office.',
     },
     es: {

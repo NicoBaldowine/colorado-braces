@@ -364,7 +364,7 @@ export const translations = {
       },
       doctor: {
         title: "Meet Dr. Eduardo Garcia, DDS",
-        subtitle: "Your Expert Orthodontist in Denver",
+        subtitle: "Your Expert Orthodontic Provider in Denver",
         introduction: "Dr. Eduardo Garcia brings a wealth of experience and a compassionate approach to orthodontic care at Colorado Braces.",
         education: {
           title: "Educational Background:",

@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="<?= lang ?>">
+<head>
+  <base target="_top">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root { color-scheme: light; font-family: Arial, Helvetica, sans-serif; color: #17324b; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #fff; }
+    form { padding: 2px 2px 12px; }
+    .intro { color: #526174; line-height: 1.6; margin: 0 0 28px; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+    .full { grid-column: 1 / -1; }
+    label { display: block; margin-bottom: 9px; font-size: 14px; font-weight: 700; }
+    .required { color: #b64448; }
+    input, textarea { width: 100%; border: 1px solid #cbd9e2; border-radius: 12px; background: #fff; padding: 13px 15px; font: inherit; color: #17324b; box-shadow: 0 2px 5px rgba(2,58,101,.04); }
+    input:focus, textarea:focus { outline: 3px solid #b9d5e3; border-color: #023a65; }
+    textarea { min-height: 130px; resize: vertical; }
+    .date { margin: 24px 0; color: #64748b; font-size: 14px; }
+    .actions { border-top: 1px solid #edf0f3; padding-top: 24px; }
+    button { border: 0; border-radius: 999px; background: #023a65; color: #fff; padding: 14px 28px; font: inherit; font-weight: 700; cursor: pointer; }
+    button:hover { background: #034b82; }
+    button:disabled { opacity: .55; cursor: wait; }
+    .message { margin-top: 18px; line-height: 1.5; }
+    .error { color: #9b1c24; }
+    .success { color: #17324b; background: #eef7f3; border: 1px solid #b9d8ca; border-radius: 14px; padding: 24px; font-weight: 600; line-height: 1.6; }
+    .trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+    @media (max-width: 600px) { .grid { grid-template-columns: 1fr; gap: 18px; } .full { grid-column: auto; } }
+  </style>
+</head>
+<body>
+  <form id="referral">
+    <p class="intro"><?= lang === 'es' ? 'Completa el formulario para enviar la referencia a nuestro consultorio.' : 'Complete the form below to send your referral to our office.' ?></p>
+    <div class="grid">
+      <div>
+        <label for="referringDoctor"><?= lang === 'es' ? 'Profesional que refiere' : 'Referring Doctor' ?></label>
+        <input id="referringDoctor" name="referringDoctor" maxlength="160" autocomplete="organization">
+      </div>
+      <div>
+        <label for="patientName"><?= lang === 'es' ? 'Nombre del paciente' : 'Patient Name' ?> <span class="required">*</span></label>
+        <input id="patientName" name="patientName" maxlength="160" autocomplete="name" required>
+      </div>
+      <div>
+        <label for="gender"><?= lang === 'es' ? 'Género' : 'Gender' ?></label>
+        <input id="gender" name="gender" maxlength="80">
+      </div>
+      <div>
+        <label for="age"><?= lang === 'es' ? 'Edad' : 'Age' ?></label>
+        <input id="age" name="age" maxlength="20" inputmode="numeric">
+      </div>
+      <div>
+        <label for="guardian"><?= lang === 'es' ? 'Nombre del padre, madre o tutor' : 'Parent / Guardian Name' ?></label>
+        <input id="guardian" name="guardian" maxlength="160">
+      </div>
+      <div>
+        <label for="phone"><?= lang === 'es' ? 'Teléfono' : 'Phone Number' ?> <span class="required">*</span></label>
+        <input id="phone" name="phone" type="tel" maxlength="80" autocomplete="tel" required>
+      </div>
+      <div class="full">
+        <label for="panoramic"><?= lang === 'es' ? 'Radiografía panorámica disponible, fecha' : 'Panoramic radiograph available, dated' ?></label>
+        <input id="panoramic" name="panoramic" maxlength="160">
+      </div>
+      <div class="full">
+        <label for="comments"><?= lang === 'es' ? 'Comentarios / Notas' : 'Comments / Notes' ?> <span class="required">*</span></label>
+        <textarea id="comments" name="comments" maxlength="3000" required></textarea>
+      </div>
+    </div>
+    <input type="hidden" name="nonce" value="<?= nonce ?>">
+    <div class="trap" aria-hidden="true"><label for="website">Website</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
+    <p class="date"><?= lang === 'es' ? 'La fecha y hora del envío se agregarán automáticamente.' : 'The submission date and time will be added automatically.' ?></p>
+    <div class="actions">
+      <button id="submit" type="submit"><?= lang === 'es' ? 'Enviar referencia' : 'Submit referral' ?></button>
+      <p id="message" class="message" role="status" aria-live="polite"></p>
+    </div>
+  </form>
+  <script>
+    const form = document.getElementById('referral');
+    const button = document.getElementById('submit');
+    const message = document.getElementById('message');
+    const isSpanish = document.documentElement.lang === 'es';
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+      button.disabled = true;
+      message.textContent = isSpanish ? 'Enviando…' : 'Sending…';
+      message.className = 'message';
+      const payload = Object.fromEntries(new FormData(form).entries());
+      google.script.run
+        .withSuccessHandler(function () {
+          form.innerHTML = '<div class="success" role="status">' +
+            (isSpanish ? 'Gracias. La referencia se envió a Colorado Braces.' : 'Thank you. Your referral was sent to Colorado Braces.') +
+            '</div>';
+        })
+        .withFailureHandler(function () {
+          button.disabled = false;
+          message.textContent = isSpanish
+            ? 'No se pudo enviar. Actualiza la página e inténtalo de nuevo o llama al (303) 991-4455.'
+            : 'Could not send. Refresh the page and try again, or call (303) 991-4455.';
+          message.className = 'message error';
+        })
+        .submitBrandedReferral(payload);
+    });
+  </script>
+</body>
+</html>

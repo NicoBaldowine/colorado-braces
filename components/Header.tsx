@@ -117,6 +117,15 @@ export default function Header() {
               </Link>
 
               <Link
+                href={`/${lang}/referrals/`}
+                className={`text-gray-700 font-medium hover:text-[#023A65] hover:bg-gray-50 px-2 py-2 rounded-md transition-colors ${
+                  activePath === `/${lang}/referrals` ? "text-[#023A65] bg-gray-50" : ""
+                }`}
+              >
+                {lang === 'es' ? 'Referir paciente' : 'Referrals'}
+              </Link>
+
+              <Link
                 href={pathname?.includes('/privacy') ? `/${lang}/#contact` : '#contact'}
                 className="text-gray-700 font-medium hover:text-[#023A65] hover:bg-gray-50 px-2 py-2 rounded-md transition-colors cursor-pointer"
               >
@@ -255,6 +264,16 @@ export default function Header() {
                 onClick={() => setIsMenuOpen(false)}
               >
                 {t('common.navigation.blog')}
+              </Link>
+
+              <Link
+                href={`/${lang}/referrals/`}
+                className={`px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#023A65] ${
+                  activePath === `/${lang}/referrals` ? "text-[#023A65] bg-gray-50" : ""
+                }`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {lang === 'es' ? 'Referir paciente' : 'Referrals'}
               </Link>
 
               {/* Language Selector in Mobile Menu */}

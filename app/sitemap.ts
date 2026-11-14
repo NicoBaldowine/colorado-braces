@@ -13,6 +13,7 @@ const localizedPaths = [
   'blog/can-clear-aligners-fix-bite',
   'blog/how-do-braces-work',
   'privacy',
+  'referrals',
   'services/clear-aligners',
   'services/clear-braces',
   'services/conventional-braces',

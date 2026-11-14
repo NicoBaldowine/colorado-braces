@@ -49,6 +49,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href={`/${lang}/referrals/`} className="text-gray-600 hover:text-[#023A65] transition-colors">
+                  {lang === 'es' ? 'Referir paciente' : 'Referrals'}
+                </Link>
+              </li>
+              <li>
                 <Link href={`/${lang}/#contact`} className="text-gray-600 hover:text-[#023A65] transition-colors">
                   {t('footer.columns.ourSite.links.contact')}
                 </Link>

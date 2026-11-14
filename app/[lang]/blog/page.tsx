@@ -15,6 +15,12 @@ export default function Blog() {
   const blogPosts = {
     en: [
       {
+        title: "Why Teeth Shift After Braces or Aligners—and How Retainers Help",
+        description: "Treatment may be finished, but your teeth can still move. Learn why retainers matter, how to care for a clear retainer, and when to call your provider.",
+        slug: "why-retainers-matter",
+        image: "/essix-retainer-original.png"
+      },
+      {
         title: "Why Age 7 Is the Right Time for a First Orthodontic Visit",
         description: "Age 7 is the right milestone for a first orthodontic checkup. Learn what the AAO, ADA, and clinical studies say about timing.",
         slug: "first-orthodontic-visit-age-7",
@@ -46,6 +52,12 @@ export default function Blog() {
       }
     ],
     es: [
+      {
+        title: "Por qué los dientes se mueven después de la ortodoncia y cómo ayudan los retenedores",
+        description: "Aunque termine el tratamiento, los dientes pueden moverse. Descubre para qué sirve el retenedor, cómo cuidarlo y cuándo consultar.",
+        slug: "why-retainers-matter",
+        image: "/essix-retainer-original.png"
+      },
       {
         title: "Por qué los 7 años son la edad adecuada para la primera visita al ortodoncista",
         description: "Los 7 años son un momento adecuado para la primera evaluación de ortodoncia. Conoce las recomendaciones de la AAO y la ADA, y la evidencia clínica.",

@@ -7,16 +7,16 @@ const copy = {
     title: 'Refer a patient to Colorado Braces',
     intro: 'Thank you for trusting us with your patient’s orthodontic care. We value the opportunity to work with you and will keep your referral experience straightforward.',
     formTitle: 'Referral form',
-    formIntro: 'Complete the form below to send your referral to our office.',
+    formIntro: 'Complete the form below to send your referral to our office. A PDF copy will be emailed to the referring doctor’s address provided.',
     openForm: 'Open the referral form in a new tab',
     backupForm: 'Having trouble? Use the backup referral form',
     unavailable: 'The online referral form is being set up. Please call our office to arrange a referral.',
     previewLabel: 'Local preview — submissions disabled',
-    previewDate: 'The submission date and time will be added automatically.',
     previewSubmit: 'Submit referral (preview only)',
     previewNote: 'This is a design preview. Please use the live referral form to send patient information.',
     previewFields: [
       { label: 'Referring Doctor', required: false },
+      { label: "Referring doctor's email", required: true },
       { label: 'Patient Name', required: true },
       { label: 'Gender', required: false },
       { label: 'Age', required: false },
@@ -32,16 +32,16 @@ const copy = {
     title: 'Refiere un paciente a Colorado Braces',
     intro: 'Gracias por confiar en nosotros para la atención ortodóntica de tu paciente. Valoramos la oportunidad de colaborar contigo y queremos que el proceso de referencia sea sencillo.',
     formTitle: 'Formulario de referencia',
-    formIntro: 'Completa el formulario para enviar la referencia a nuestro consultorio.',
+    formIntro: 'Completa el formulario para enviar la referencia a nuestro consultorio. Enviaremos una copia en PDF al correo del profesional que refiere.',
     openForm: 'Abrir el formulario de referencia en otra pestaña',
     backupForm: '¿Tienes problemas? Usa el formulario de respaldo',
     unavailable: 'Estamos preparando el formulario de referencias en línea. Llama a nuestro consultorio para coordinar una referencia.',
     previewLabel: 'Vista previa local — envíos desactivados',
-    previewDate: 'La fecha y hora del envío se agregarán automáticamente.',
     previewSubmit: 'Enviar referencia (solo vista previa)',
     previewNote: 'Esta es una vista previa del diseño. Usa el formulario publicado para enviar información del paciente.',
     previewFields: [
       { label: 'Profesional que refiere', required: false },
+      { label: 'Correo electrónico del profesional que refiere', required: true },
       { label: 'Nombre del paciente', required: true },
       { label: 'Género', required: false },
       { label: 'Edad', required: false },
@@ -81,7 +81,7 @@ export default function ReferralsPage({ params }: { params: { lang: string } }) 
                   title={content.formTitle}
                   loading="lazy"
                   referrerPolicy="no-referrer"
-                  className="w-full h-[1120px] min-[700px]:h-[780px] border-0"
+                  className="w-full h-[1220px] min-[700px]:h-[900px] border-0"
                 />
                 <div className="mt-4 flex flex-col gap-3 text-sm sm:flex-row sm:gap-6">
                   <a href={brandedUrl} target="_blank" rel="noopener noreferrer" className="text-[#023A65] font-semibold underline underline-offset-4">{content.openForm}</a>
@@ -106,7 +106,6 @@ export default function ReferralsPage({ params }: { params: { lang: string } }) 
                     </div>
                   ))}
                 </div>
-                <p className="text-sm text-gray-500">{content.previewDate}</p>
                 <div className="flex flex-col gap-4 border-t border-gray-100 pt-6 sm:flex-row sm:items-center sm:justify-between">
                   <button type="button" disabled className="rounded-full bg-[#023A65] px-7 py-3 font-semibold text-white opacity-60 cursor-not-allowed">{content.previewSubmit}</button>
                   <p className="max-w-sm text-sm leading-relaxed text-gray-500">{content.previewNote}</p>

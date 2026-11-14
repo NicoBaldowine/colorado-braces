@@ -487,6 +487,7 @@ function submitBrandedReferral(payload) {
   }
   const fields = [
     ['referringDoctor', 'Referring Doctor', 160],
+    ['referringDoctorEmail', "Referring Doctor's Email", 254],
     ['patientName', 'Patient Name', 160],
     ['gender', 'Gender', 80],
     ['age', 'Age', 20],
@@ -502,8 +503,11 @@ function submitBrandedReferral(payload) {
     }
     values[key] = payload[key].trim();
   });
-  if (!values.patientName || !values.phone || !values.comments) {
-    throw new Error('Patient name, phone number, and comments are required.');
+  if (!values.patientName || !values.phone || !values.comments || !values.referringDoctorEmail) {
+    throw new Error('Patient name, phone number, comments, and referring doctor email are required.');
+  }
+  if (!/^[^\s@,;<>]+@[^\s@,;<>]+\.[^\s@,;<>]+$/.test(values.referringDoctorEmail)) {
+    throw new Error('Please enter a valid referring doctor email address.');
   }
   if (typeof payload.nonce !== 'string' || !/^[a-f0-9-]{36}$/i.test(payload.nonce)) {
     throw new Error('Please refresh the page and try again.');
@@ -523,7 +527,11 @@ function submitBrandedReferral(payload) {
   }
 
   const submittedAt = Utilities.formatDate(new Date(), Session.getScriptTimeZone(), 'yyyy-MM-dd HH:mm z');
-  createAndSendReferralPdf_(fields.map(([key, label]) => [label, values[key]]), submittedAt);
+  createAndSendReferralPdf_(
+    fields.map(([key, label]) => [label, values[key]]),
+    submittedAt,
+    values.referringDoctorEmail
+  );
   return { ok: true };
 }
 
@@ -551,7 +559,7 @@ function sendReferralPdf(event) {
   createAndSendReferralPdf_(rows, submittedAt);
 }
 
-function createAndSendReferralPdf_(rows, submittedAt) {
+function createAndSendReferralPdf_(rows, submittedAt, referringDoctorEmail) {
   const document = DocumentApp.create(`Colorado Braces referral ${submittedAt}`);
   const documentFile = DriveApp.getFileById(document.getId());
   try {
@@ -577,13 +585,17 @@ function createAndSendReferralPdf_(rows, submittedAt) {
     document.saveAndClose();
     const pdf = documentFile.getAs(MimeType.PDF)
       .setName('Colorado-Braces-Doctor-Referral.pdf');
-    MailApp.sendEmail({
+    const email = {
       to: REFERRAL_RECIPIENT,
       subject: 'New doctor referral — Colorado Braces',
-      body: 'A new doctor referral was submitted. The details are in the attached PDF.',
+      body: 'A doctor referral was submitted to Colorado Braces. The details are in the attached PDF.',
       attachments: [pdf],
       name: 'Colorado Braces Referrals',
-    });
+    };
+    if (referringDoctorEmail) {
+      email.cc = referringDoctorEmail;
+    }
+    MailApp.sendEmail(email);
   } finally {
     documentFile.setTrashed(true);
   }

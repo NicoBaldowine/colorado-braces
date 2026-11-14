@@ -81,7 +81,7 @@ export default function ReferralsPage({ params }: { params: { lang: string } }) 
                   title={content.formTitle}
                   loading="lazy"
                   referrerPolicy="no-referrer"
-                  className="w-full h-[1120px] md:h-[780px] border-0"
+                  className="w-full h-[1120px] min-[700px]:h-[780px] border-0"
                 />
                 <div className="mt-4 flex flex-col gap-3 text-sm sm:flex-row sm:gap-6">
                   <a href={brandedUrl} target="_blank" rel="noopener noreferrer" className="text-[#023A65] font-semibold underline underline-offset-4">{content.openForm}</a>

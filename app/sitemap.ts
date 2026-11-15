@@ -14,10 +14,18 @@ const localizedPaths = [
   'blog/how-do-braces-work',
   'privacy',
   'referrals',
+  'services',
   'services/clear-aligners',
   'services/clear-braces',
   'services/conventional-braces',
   'services/whitening',
+  'services/nightguards',
+  'services/sports-guards',
+  'services/phase-1-treatment',
+  'services/teen-orthodontics',
+  'services/adult-orthodontics',
+  'services/retainers',
+  'services/snoring-sleep-apnea',
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

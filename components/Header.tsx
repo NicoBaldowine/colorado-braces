@@ -8,6 +8,7 @@ import { usePathname } from 'next/navigation';
 import { useTranslations } from '@/hooks/useTranslations';
 import Logo from '@/app/assets/colorado-braces.svg'
 import Image from 'next/image';
+import { serviceCards } from '@/lib/serviceCatalog';
 
 export default function Header() {
   const pathname = usePathname();
@@ -16,6 +17,8 @@ export default function Header() {
   const [selectedLanguage, setSelectedLanguage] = useState('English');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
 
   useEffect(() => {
     setSelectedLanguage(lang === 'es' ? t('common.languages.spanish') : t('common.languages.english'));
@@ -26,12 +29,10 @@ export default function Header() {
     { name: t('common.languages.spanish'), code: "es" },
   ];
 
-  const services = [
-    { name: t('common.services.clearAligners'), path: "/services/clear-aligners" },
-    { name: t('common.services.clearBraces'), path: "/services/clear-braces" },
-    { name: t('common.services.conventionalBraces'), path: "/services/conventional-braces" },
-    { name: t('common.services.whitening'), path: "/services/whitening" }
-  ];
+  const services = serviceCards.map((service) => ({
+    name: service[lang === 'es' ? 'es' : 'en'].title,
+    path: `/services/${service.slug}`,
+  }));
 
   const pathForLanguage = (code: string) => {
     const currentPath = pathname || `/${lang}/`;
@@ -79,8 +80,22 @@ export default function Header() {
               </Link>
 
               {/* Services Dropdown */}
-              <div className="relative group">
+              <div
+                className="relative group"
+                onMouseEnter={() => setIsServicesOpen(true)}
+                onMouseLeave={() => setIsServicesOpen(false)}
+                onFocus={() => setIsServicesOpen(true)}
+                onBlur={(event) => {
+                  if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setIsServicesOpen(false);
+                }}
+                onKeyDown={(event) => {
+                  if (event.key === 'Escape') setIsServicesOpen(false);
+                }}
+              >
                 <button
+                  type="button"
+                  aria-expanded={isServicesOpen}
+                  onClick={() => setIsServicesOpen(true)}
                   className={`flex items-center gap-2 text-gray-700 font-medium hover:text-[#023A65] hover:bg-gray-50 px-2 py-2 rounded-md transition-colors ${
                     activePath.includes("/services") ? "text-[#023A65] bg-gray-50" : ""
                   }`}
@@ -88,22 +103,22 @@ export default function Header() {
                   {t('common.navigation.services')}
                   <FaChevronDown className="w-3 h-3 transition-transform group-hover:rotate-180" />
                 </button>
-                <div className="absolute top-full left-0 mt-1 bg-white border border-gray-200 rounded-md py-1 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                  {services.map((service, index) => (
-                    service.type === 'divider' ? (
-                      <div key={`divider-${index}`} className="my-1 border-t border-gray-200" />
-                    ) : (
-                      <Link
-                        key={service.path}
-                        href={`/${lang}${service.path}/`}
-                        className={`block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#023A65] transition-colors ${
-                          activePath.includes(service.path) ? "text-[#023A65] bg-gray-50" : ""
-                        }`}
-                      >
-                        {service.name}
-                      </Link>
-                    )
+                <div className={`${isServicesOpen ? 'visible opacity-100' : 'invisible opacity-0'} absolute left-0 top-full z-50 grid max-h-[70vh] w-[440px] grid-cols-2 gap-1 overflow-y-auto rounded-md border border-gray-200 bg-white p-2 shadow-lg transition-opacity duration-200`}>
+                  {services.map((service) => (
+                    <Link
+                      key={service.path}
+                      href={`/${lang}${service.path}/`}
+                      onClick={() => setIsServicesOpen(false)}
+                      className={`rounded-md px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#023A65] ${
+                        activePath.includes(service.path) ? "bg-gray-50 text-[#023A65]" : ""
+                      }`}
+                    >
+                      {service.name}
+                    </Link>
                   ))}
+                  <Link href={`/${lang}/services/`} onClick={() => setIsServicesOpen(false)} className="col-span-2 mt-1 rounded-md bg-[#e9f3f4] px-3 py-2 text-sm font-semibold text-[#023A65] hover:bg-[#d6ebed]">
+                    {lang === 'es' ? 'Todos los servicios' : 'All services'} →
+                  </Link>
                 </div>
               </div>
 
@@ -185,7 +200,7 @@ export default function Header() {
           </div>
 
           {/* Mobile Right Section */}
-          <div className="flex md:hidden ml-auto items-center space-x-4">
+          <div className="ml-auto flex items-center space-x-4 lg:hidden">
             <a
               href="tel:3039914455"
               className="p-2 text-primary"
@@ -239,22 +254,38 @@ export default function Header() {
               </Link>
 
               {/* Services Links */}
-              {services.map((service, index) => (
-                service.type === 'divider' ? (
-                  <div key={`divider-${index}`} className="my-1 border-t border-gray-200 mx-4" />
-                ) : (
-                  <Link
-                    key={service.path}
-                    href={`/${lang}${service.path}/`}
-                    className={`px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#023A65] ${
-                      activePath === `/${lang}${service.path}` ? "text-[#023A65] bg-gray-50" : ""
-                    }`}
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {service.name}
-                  </Link>
-                )
+              <button
+                type="button"
+                aria-expanded={isMobileServicesOpen}
+                onClick={() => setIsMobileServicesOpen((open) => !open)}
+                className={`flex items-center justify-between px-4 py-3 text-left text-gray-700 hover:bg-gray-50 hover:text-[#023A65] ${
+                  activePath.includes('/services') ? 'bg-gray-50 text-[#023A65]' : ''
+                }`}
+              >
+                {t('common.navigation.services')}
+                <FaChevronDown className={`h-3 w-3 transition-transform ${isMobileServicesOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {isMobileServicesOpen && services.map((service) => (
+                <Link
+                  key={service.path}
+                  href={`/${lang}${service.path}/`}
+                  className={`py-2 pl-8 pr-4 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#023A65] ${
+                    activePath === `/${lang}${service.path}` ? "bg-gray-50 text-[#023A65]" : ""
+                  }`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {service.name}
+                </Link>
               ))}
+              {isMobileServicesOpen && <Link
+                href={`/${lang}/services/`}
+                className={`py-3 pl-8 pr-4 font-semibold text-[#023A65] hover:bg-gray-50 ${
+                  activePath === `/${lang}/services` ? 'bg-gray-50' : ''
+                }`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {lang === 'es' ? 'Todos los servicios' : 'All services'} →
+              </Link>}
 
               <Link
                 href={`/${lang}/blog/`}

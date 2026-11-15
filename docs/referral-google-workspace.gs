@@ -556,7 +556,17 @@ function sendReferralPdf(event) {
     const value = answers.get(item.getId());
     return [item.getTitle(), Array.isArray(value) ? value.join(', ') : String(value ?? '')];
   });
-  createAndSendReferralPdf_(rows, submittedAt);
+  const emailRow = rows.find(([label]) =>
+    label === "Referring Doctor's Email / Correo electrónico del profesional que refiere"
+  );
+  const referringDoctorEmail = emailRow ? emailRow[1].trim() : '';
+  createAndSendReferralPdf_(
+    rows,
+    submittedAt,
+    /^[^\s@,;<>]+@[^\s@,;<>]+\.[^\s@,;<>]+$/.test(referringDoctorEmail)
+      ? referringDoctorEmail
+      : undefined
+  );
 }
 
 function createAndSendReferralPdf_(rows, submittedAt, referringDoctorEmail) {
